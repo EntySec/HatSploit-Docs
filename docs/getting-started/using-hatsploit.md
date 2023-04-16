@@ -15,7 +15,7 @@ First, you need to run HatSploit, for this, open your terminal and type `hsf`. A
 [?] Accept HatSploit Framework Terms of Service? [y/n]
 ```
 
-After this, HatSploit will ask you to build base databases (for learning about databases, read [[Databases Management]]), this means that HatSploit will load all modules, plugins, and payloads and will save them to the base database.
+After this, HatSploit will ask you to build base databases, this means that HatSploit will load all modules, plugins, and payloads and will save them to the base database.
 
 ```
 [?] Do you want to build and connect base databases? [y/n]
@@ -79,7 +79,7 @@ enty8080
 [hsf]>
 ```
 
-* `:` is used to execute commands from file ([[HatSploit Script]]).
+* `:` is used to execute commands from file.
 
 ```
 [hsf]> :/home/user/script.hsf
