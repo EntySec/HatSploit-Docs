@@ -30,4 +30,4 @@ pip3 install git+https://github.com/EntySec/HatSploit
 
 ## Conclusion
 
-For moving to the next step, read [[Using HatSploit]].
+For moving to the next step, read [Using HatSploit](/getting-started/using-hatsploit).
