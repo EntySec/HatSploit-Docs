@@ -1,6 +1,9 @@
 ---
+layout: default
 title: Home
-layout: home
+nav_order: 1
+description: ""
+permalink: /
 ---
 
 <h3 align="center"><img src="https://hatsploit.com/images/logo-footer.png" alt="logo" height="250px"></h3>
