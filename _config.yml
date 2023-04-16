@@ -4,5 +4,8 @@ theme: just-the-docs
 
 url: https://docs.hatsploit.com
 
+back_to_top: true
+back_to_top_text: "Back to top"
+
 aux_links:
   Download HatSploit: https://github.com/EntySec/HatSploit
