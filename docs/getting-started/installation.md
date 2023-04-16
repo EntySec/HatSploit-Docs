@@ -2,7 +2,7 @@
 layout: default
 title: Installation
 parent: Getting started
-nav_order: 2
+nav_order: 1
 ---
 
 This is a guide for setting up requirements and installing the HatSploit Framework on your system.
