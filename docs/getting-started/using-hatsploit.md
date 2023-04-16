@@ -124,18 +124,4 @@ optional arguments:
 
 ## HatSploit Startup file
 
-HatSploit startup file contains all commands that should be executed on startup. It is placed in the HatSploit workplace - `~/.hsf/startup.hsf` ([HatSploit Script](/getting-started/hatsploit-script)).
-
-## HatSploit Structure
-
-**HatSploit Modules**
-
-HatSploit is a **modular** framework, so it has the ability to use modules, learn about them here - [HatSploit Modules](/getting-started/hatsploit-modules).
-
-**HatSploit Payloads**
-
-HatSploit also has payloads, they can be used with modules, learn about them here - [HatSploit Payloads](/getting-started/hatsploit-payloads).
-
-**HatSploit Plugins**
-
-HatSploit has the ability to customize the main interface and add new commands, for this we developed a plugins mechanism, learn about plugins here - [HatSploit Plugins](/getting-started/hatsploit-plugins)
+HatSploit startup file contains all commands that should be executed on startup. It is placed in the HatSploit workplace - `~/.hsf/startup.hsf`.
