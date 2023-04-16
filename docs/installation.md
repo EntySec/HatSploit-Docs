@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Installation
-nav_order: 1
+nav_order: 2
 ---
 
 This is a guide for setting up requirements and installing the HatSploit Framework on your system.
