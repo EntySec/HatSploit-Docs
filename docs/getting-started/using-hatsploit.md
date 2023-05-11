@@ -24,28 +24,48 @@ After this, HatSploit will ask you to build base databases, this means that HatS
 After all these setup steps completed, the main HatSploit interface appears.
 
 ```
-         █▀▀▀▀▀█ ▀▀▀█▄ ▀   █▀▀▀▀▀█
-         █ ███ █  ▀▄█▄█ ▄▄ █ ███ █
-         █ ▀▀▀ █  ▄▀██ █ ▄ █ ▀▀▀ █
-         ▀▀▀▀▀▀▀ █▄▀ █▄▀ █ ▀▀▀▀▀▀▀
-         ▀█▄▀█▄▀▄▄▀▄▄  ▀█ ▄▀▄▄▄▄▄▀
-         ▀   ▀ ▀▄ ▀ ██  ▀█▄█▀▀█▄▄█
-         █ ▀█ ▄▀▄█▀██  ▄▄█▄▀▀▄  ▄▀
-         █▀▀▄▄█▀   ▄ ▄▀██ ▄▀▀ ▀█▀█
-         ▀ ▀   ▀▀▄▄▄▀▀█  █▀▀▀█ ▀█
-         █▀▀▀▀▀█  ▀▄█▀█▀▄█ ▀ █▀  █
-         █ ███ █ ██ ██ █▀███▀▀█ █▄
-         █ ▀▀▀ █ ▄███▄▀  ▀▄▄██ ███
-         ▀▀▀▀▀▀▀ ▀▀▀     ▀▀▀  ▀  ▀
-       http://hatsploit.netlify.app/
+Unable to handle kernel NULL pointer dereference at virtual address 0xd34db33f
+EFLAGS: 00010046
+eax: 00000001 ebx: f77c8c00 ecx: 00000000 edx: f77f0001
+esi: 803bf014 edi: 8023c755 ebp: 80237f84 esp: 80237f60
+ds: 0018   es: 0018  ss: 0018
+Process Swapper (Pid: 0, process nr: 0, stackpage=80377000)
 
-    --=[ HatSploit Framework 5.0.0
---==--=[ Developed by EntySec (https://entysec.netlify.app/)
-    --=[ 66 modules | 51 payloads | 2 plugins
+Stack: hhhhhhhh..........hhhhhhhh
+       hhhhhhhh..........hhhhhhhh
+       hhhhhhhhhhhhhhhhhhhhhhhhhh
+       hhhhhhhh..........hhhhhhhh
+       hhhhhhhh..........hhhhhhhh
+       hhhhhhhh..........hhhhhhhh
+       ..........................
+       cccccccccccccccccccccccccc
+       cccccccccccccccccccccccccc
+       ccccccccc.................
+       cccccccccccccccccccccccccc
+       cccccccccccccccccccccccccc
+       .................ccccccccc
+       cccccccccccccccccccccccccc
+       cccccccccccccccccccccccccc
+       ..........................
+       ffffffffffffffffffffffffff
+       ffffffff..................
+       ffffffffffffffffffffffffff
+       ffffffff..................
+       ffffffff..................
+       ffffffff..................
+
+Code: 00 00 00 00 H4 T! SP L0 1T FR 4M 3W OR K! V3 R5 I0 N1 00 00 00 00
+Aiee, Killing Interrupt handler
+Kernel panic: Attempted to kill the idle task!
+In swapper task - not syncing
+
+    --=[ HatSploit Framework 7.0.0 n0w4r (https://hatsploit.com)
+--==--=[ Developed by EntySec (https://entysec.com)
+    --=[ 66 modules | 39 payloads | 2 encoders | 2 plugins
  
 HatSploit Tip: Run exec to execute system commands
 
-[hsf]> 
+[hsf7]> 
 ```
 
 ## Using Commands
@@ -97,24 +117,23 @@ enty8080
 Run options are options that you can select on startup via command-line arguments.
 
 ```
-usage: hsf [-h] [-c] [--check-modules] [--check-payloads] [--check-plugins]
-           [--rest-api] [--host HOST] [--port PORT] [--username USERNAME]
-           [--password PASSWORD] [-u] [-s SCRIPT] [--no-exit] [--no-startup]
+usage: hsf [-h] [-c] [--check-modules] [--check-payloads] [--check-encoders]
+           [--check-plugins] [--rpc] [--host HOST] [--port PORT] [-u] [-s SCRIPT] [--no-exit]
+           [--no-startup]
 
-Modular penetration testing platform that enables you to write, test, and
-execute exploit code.
+Modular penetration testing platform that enables you to write, test, and execute exploit
+code.
 
 optional arguments:
   -h, --help            show this help message and exit
-  -c, --check           Check base modules, payloads and plugins.
+  -c, --check           Check base modules, payloads, encoders and plugins.
   --check-modules       Check only base modules.
   --check-payloads      Check only base payloads.
+  --check-encoders      Check only base encoders.
   --check-plugins       Check only base plugins.
-  --rest-api            Start HatSploit REST API server.
-  --host HOST           HatSploit REST API server host. [default: 127.0.0.1]
-  --port PORT           HatSploit REST API server port. [default: 8008]
-  --username USERNAME   HatSploit REST API server username.
-  --password PASSWORD   HatSploit REST API server password.
+  --rpc                 Start HatSploit RPC server.
+  --host HOST           HatSploit RPC server host. [default: 127.0.0.1]
+  --port PORT           HatSploit RPC server port. [default: 5000]
   -u, --update          Update HatSploit Framework.
   -s SCRIPT, --script SCRIPT
                         Execute HatSploit commands from script file.
