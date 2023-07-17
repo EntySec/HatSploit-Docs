@@ -90,7 +90,7 @@ self.commands = {
 
 **NOTE:** If your command has specific list of arguments thay should be displayed if `MinArgs` condition is not achieved, add `Options` like this:
 
-```
+```python
 'Options': {
     '-e': ['<arg>', 'Example'],
 }
@@ -98,7 +98,7 @@ self.commands = {
 
 Moreover, commands are implemented within methods which have the same names as their commands from `self.commands`. For example (for previous dictionary):
 
-```
+```python
 def command1(self, argc, argv):
     ... snip ...
 
