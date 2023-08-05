@@ -52,7 +52,7 @@ class HatSploitPlugin(Plugin):
 
 **NOTE:** All plugins should inherit from `Plugin` (`hatsploit.lib.plugin`), otherwise plugin won't be loaded.
 
-Lets go through all the necessary methods:
+Let's go through all the necessary methods:
 
 * `self.details` - Is a dictionary containing all necessary information (`Full name`, `name`, `description`, `authors`, etc.)
 * `self.commands` - Is a dictionary that contains all categories and commands implemented by the plugin.
@@ -83,7 +83,7 @@ self.commands = {
 * `Usage` - Usage which is displayed if `MinArgs` condition is not achieved.
 * `MinArgs` - Minimum necessary arguments. (e.g. if your command requires one mandatory argument, then `MinArgs` should be `1`)
 
-**NOTE:** If your command has specific list of arguments thay should be displayed if `MinArgs` condition is not achieved, add `Options` like this:
+**NOTE:** If your command has specific list of arguments that should be displayed if `MinArgs` condition is not achieved, add `Options` like this:
 
 ```python
 'Options': {
@@ -103,3 +103,8 @@ def command2(self, argc, argv):
 
 * `argc` - Number or arguments. (including command name)
 * `argv` - List of arguments. (including command name, which is `argv[0]`)
+
+## Examples
+
+You can always refer to the [main repository](https://github.com/EntySec/HatSploit/tree/main/hatsploit/plugins) which contains some plugins and rely on them.
+We will be glad if you first explore already existing plugins before writing new ones.

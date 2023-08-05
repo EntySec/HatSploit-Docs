@@ -2,7 +2,7 @@
 layout: default
 title: Kits
 parent: Development
-nav_order: 5
+nav_order: 7
 ---
 
 Kits are packages that help to extend module's functionality. Sometimes, there are some cases, when we need a TCP connection with the target and to avoid writing TCP client by yourself, you can use a kit.
@@ -35,4 +35,4 @@ Kits also declare their options inside the module. For the above example, these 
 
 So, after inheriting from this kit, you won't need to declare them by yourself.
 
-Read more about options in the [options section](/docs/development/options.md).
+Read more about options [here](/docs/development/options).

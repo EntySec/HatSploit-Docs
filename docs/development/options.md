@@ -2,7 +2,7 @@
 layout: default
 title: Options
 parent: Development
-nav_order: 4
+nav_order: 6
 ---
 
 Options can be both module-defined and kit-defined.
