@@ -35,4 +35,4 @@ Kits also declare their options inside the module. For the above example, these 
 
 So, after inheriting from this kit, you won't need to declare them by yourself.
 
-Read more about options in the options section.
+Read more about options in the [options section](/docs/development/options.md).
