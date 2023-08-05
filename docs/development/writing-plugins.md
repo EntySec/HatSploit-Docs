@@ -2,15 +2,10 @@
 layout: default
 title: Writing plugins
 parent: Development
-nav_order: 1
+nav_order: 2
 ---
 
-Plugins are intended to extend the basic HatSploit command list. It is pretty easy to write your first plugin. Before writing the plugin, answer these questions:
-
-* Why am I writing this plugin?
-* What should this plugin do?
-* Will people use it?
-
+Plugins are intended to extend the basic HatSploit command list.
 After deciding what your plugin should do, take this template and edit it for your needs.
 
 ```python

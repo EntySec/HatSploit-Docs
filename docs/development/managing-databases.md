@@ -2,7 +2,7 @@
 layout: default
 title: Managing databases
 parent: Development
-nav_order: 2
+nav_order: 1
 ---
 
 There are four types of databases in the HatSploit Framework.
