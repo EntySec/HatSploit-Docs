@@ -16,3 +16,5 @@ permalink: /
 </p>
 
 Before using HatSploit Framework, learn about it here - [About HatSploit](https://hatsploit.com/)
+
+If you still have any questions, even after reading this documentation, please refer to [issues](https://github.com/EntySec/HatSploit/issues).
