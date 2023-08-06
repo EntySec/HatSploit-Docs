@@ -16,9 +16,9 @@ For learning how to write HatSploit plugins: [here](/docs/development/writing-pl
 First, we'll try to load the first HatSploit fun plugin - `cowsay`. For this purpose, HatSploit has its own `load` command with pretty simple usage.
 
 ```
-(hsf)> load
+[hsf]> load
 Usage: load <plugin|number>
-(hsf)>
+[hsf]>
 ```
 
 **NOTE:** You can load the plugin by its number from `search` or `show` lists.
@@ -26,7 +26,7 @@ Usage: load <plugin|number>
 After loading the `cowsay` plugin, this cow will appear.
 
 ```
-(hsf)> load cowsay
+[hsf]> load cowsay
 [*] Loading cowsay plugin...
  ________________
 < Cow here, moo! >
@@ -39,7 +39,7 @@ After loading the `cowsay` plugin, this cow will appear.
         
 [i] Use cowsay to call me.
 [+] Successfully loaded cowsay plugin!
-(hsf)> help
+[hsf]> help
 ```
 
 Also, after this, the new command will be added to the main HatSploit interface.
@@ -55,7 +55,7 @@ Cowsay Commands:
 Executing the new command `cowsay` with the argument `HatSploit is Great` will give us this result.
 
 ```
-(hsf)> cowsay 'HatSploit is Great'
+[hsf]> cowsay 'HatSploit is Great'
  ____________________
 < HatSploit is Great >
  --------------------
@@ -73,9 +73,9 @@ Executing the new command `cowsay` with the argument `HatSploit is Great` will g
 To free space, you can unload the loaded plugin, just use the `unload` command.
 
 ```
-(hsf)> unload
+[hsf]> unload
 Usage: unload <plugin|number>
-(hsf)>
+[hsf]>
 ```
 
 **NOTE:** You can unload the plugin by its number from `search` or `show` lists.

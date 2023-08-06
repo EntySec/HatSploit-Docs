@@ -2,7 +2,7 @@
 layout: default
 title: HatSploit Script
 parent: Getting started
-nav_order: 5
+nav_order: 8
 ---
 
 HatSploit has the ability to execute interface commands from the given file.
