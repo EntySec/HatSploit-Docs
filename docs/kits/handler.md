@@ -48,7 +48,7 @@ class HatSploitPayload(Payload, Handler):
 
 * `sender` - function that takes one argument and is used to exploit the vulnerability and send the payload.
 
-**NOTE:** `sender` is a complete exploit. This function should take command (or other type of payload) and execute it on target. This function can easily be called an entry point for handler.
+**NOTE:** `sender` is a complete exploit. This function should take command or payload and execute it on target. This function can easily be called an entry point for handler.
 
 **optional arguments:**
 

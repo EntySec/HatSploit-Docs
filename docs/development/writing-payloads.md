@@ -46,7 +46,21 @@ class HatSploitPayload(Payload):
 Let's go through all the necessary methods:
 
 * `self.details` - Is a dictionary containing all necessary information (`Full name`, `name`, `description`, `authors`, etc.)
-* `self.run()` - Method, which is called on `run`.
+* `self.run()` - Method, which is called on `run` and contains whole payload.
+
+Optional methods:
+
+* `self.implant()` - Method which is called if final phase is required and contains the main part of payload.
+
+### Payload implant
+
+If payload's `self.run()` method should contain full payload, then `self.implant()` contains only the necessary part of it which is also called the final phase.
+
+For example, if we have payload which connects back to HatSploit and the duplicates `/bin/sh` to the socket, then `self.implant()` of this payload should not contain the part which is related to connecting back.
+
+With other words, `self.implant()` is a final phase that is being sent if payload is phased (staged). Each payload with `self.implant()` can be called phased (staged).
+
+This can be necessary if payload is bigger than the buffer size, then handler will need to send an intermediate phase and then the code from `self.implant()`.
 
 ### Payload platform & arch (`Platform`, `Arch`)
 
@@ -56,7 +70,6 @@ For now, HatSploit does accept these platforms and architectures:
 * Architectures: `x86`, `x64`, `armle`, `armbe`, `aarch64`, `mipsle`, `mipsbe`, `mips64`.
 
 ### Payload type (`Type`)
-
 These types can be used for payloads:
 
 * `one_side` - payload is sent once and no session is opened since no data is being received from payload.
