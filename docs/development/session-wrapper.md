@@ -21,8 +21,8 @@ class HatSploitSession(Session):
 
         self.details.update({
             'Post': "",
-            'Platform': "",
-            'Arch': "",
+            'Platform': Platform,
+            'Arch': Arch,
             'Type': "",
             'Host': "",
             'Port': None

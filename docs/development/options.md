@@ -48,15 +48,35 @@ self.myvar = IPv4Option("127.0.0.1", "IP address.", False, True)
 
 Forth argument is a flag, which makes an option advanced or regular.
 
-Acknowledge that you can hide an option by setting `visible` to `False`
+You can set option value calling `set` method:
+
+```python
+self.myvar.set("0.0.0.0")
+```
+
+Acknowledge that you can hide an option by setting `visible` to `False`.
 
 ```python
 self.myvar.visible = False
 ```
 
+**NOTE:** Options which are not visible can be set from module (in code), but can't be set using `set` command.
+
+You may also lock variable, so it will be impossible to set it. Locked options can't be set using `set` command and also from the module.
+
+```python
+self.myvar.locked = True
+```
+
 ### Usage
 
 You can get option value inside the module by just accessing `self.myvar.value`, considering that `self.myvar` is a declaration of an option.
+
+### Option-specific usage
+
+* `IPOption`, `IPv4Option`, `IPv6Option` and `PortOption`:
+  * `self.myvar.little` - Byte representation of value (little endian)
+  * `self.myvar.big` - Byte representation of value (big endian)
 
 ## Kit-defined
 

@@ -30,7 +30,7 @@ class HatSploitEncoder(Encoder):
                 'Your name (your nickname) - encoder developer',
             ],
             'Description': "description",
-            'Architecture': "architecture",
+            'Architecture': Arch,
         })
 
     def run(self):
@@ -44,6 +44,12 @@ Let's go through all the necessary methods:
 * `self.details` - Is a dictionary containing all necessary information (`Full name`, `name`, `description`, `authors`, etc.)
 * `self.payload` - Payload which can be encoded.
 * `self.run()` - Method, which is called on `run`.
+
+### Encoder arch (`Arch`)
+
+For now, HatSploit does accept these architectures:
+
+* Architectures: ARCH_X64, ARCH_X86, ARCH_AARCH64, ARCH_MIPSLE, ARCH_MIPSBE, ARCH_ARMLE, ARCH_ARMBE.
 
 ### Encoder options
 

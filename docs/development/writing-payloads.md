@@ -30,8 +30,8 @@ class HatSploitPayload(Payload):
                 'Your name (your nickname) - payload developer',
             ],
             'Description': "description.",
-            'Arch': "architecture",
-            'Platform': "platform",
+            'Arch': Arch,
+            'Platform': Platform,
             'Session': None,
             'Rank': "rank level",
             'Type': "type",
@@ -66,10 +66,11 @@ This can be necessary if payload is bigger than the buffer size, then handler wi
 
 For now, HatSploit does accept these platforms and architectures:
 
-* Platforms: `macos`, `linux`, `apple_ios`, `android`, `windows`, `bsd`.
-* Architectures: `x86`, `x64`, `armle`, `armbe`, `aarch64`, `mipsle`, `mipsbe`, `mips64`.
+* Platforms: OS_LINUX, OS_MACOS, OS_ANDROID, OS_WINDOWS, OS_IPHONE, OS_UNIX.
+* Architectures: ARCH_X64, ARCH_X86, ARCH_AARCH64, ARCH_MIPSLE, ARCH_MIPSBE, ARCH_ARMLE, ARCH_ARMBE.
 
 ### Payload type (`Type`)
+
 These types can be used for payloads:
 
 * `one_side` - payload is sent once and no session is opened since no data is being received from payload.

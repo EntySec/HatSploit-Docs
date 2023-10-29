@@ -30,12 +30,12 @@ class HatSploitModule(Module):
                 'Your name (your nickname) - module developer',
             ],
             'Description': "description.",
-            'Platform': "platform",
+            'Platform': Platform,
             'Rank': "rank level",
             'Payload': {
                 'Value': "default payload",
-                'Platforms': ['platform 1', 'platform 2', ...],
-                'Arches': ['architecture 1', 'architecture 2', ...],
+                'Platforms': [Platform, Platform, ...],
+                'Arches': [Arch, Arch, ...],
                 'Types': ['type 1', 'type 2', ...]
             }
         })
@@ -55,7 +55,7 @@ Let's go through all the necessary methods:
 
 For now, HatSploit does accept these platforms:
 
-* Platforms: `macos`, `linux`, `apple_ios`, `android`, `windows`, `bsd`.
+* Platforms: OS_LINUX, OS_MACOS, OS_ANDROID, OS_WINDOWS, OS_IPHONE, OS_UNIX.
 
 ### Module rank (`Rank`)
 
