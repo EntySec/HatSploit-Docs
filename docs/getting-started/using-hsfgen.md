@@ -52,7 +52,7 @@ Options `-p` and `-e` must be used to generate specific payload and encode it wi
 * `-i`, `--iterations` - encode payload `N` times.
 * `-b`, `--badchars` - omit bad characters duing the generation.
 * `--options` - set options in payload and/or encoder.
-* `--pack` - pack payload into executable file (requires `--platform` and `--arch` to be set).
+* `--pack` - pack payload into executable file.
 * `--implant` - generate only implant of the payload not the complete payload.
 * `-f`, `--format` - select custom executable format.
 * `-o`, `--output` - output result to the file.
@@ -90,4 +90,4 @@ The output of this code will be:
 
 If you'd like to save it to the file call it with `-o`.
 
-If you wish to pack it into `ELF` so it could be executed in the future, call `--pack --platform linux --arch x64`.
+If you wish to pack it into `ELF` so it could be executed in the future, call `--pack`.
