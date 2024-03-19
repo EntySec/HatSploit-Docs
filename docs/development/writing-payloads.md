@@ -51,6 +51,13 @@ Let's go through all the necessary methods:
 Optional methods:
 
 * `self.implant()` - Method which is called if final phase is required and contains the main part of payload.
+* `self.phase()` - Method which is called if whole payload is too big, it is an intermediate phase that is sent before the final implant.
+
+### Payload phase
+
+If your final payload is too big (if there is a limit on the exploited system) then your payload should also include `self.phase()` method that is used as an intermediate phase. So, if payload is big, then instead of sending whole payload available in `self.run()`, handler will firstly send phase from `self.phase()` and then implant from `self.implant()`.
+
+**NOTE:** If you payload has more than one intermediate phase, methods can be called `self.phase()` for first phase, `self.phase1()` for second phase, `self.phase2()` for third and etc.
 
 ### Payload implant
 
@@ -60,7 +67,7 @@ For example, if we have payload which connects back to HatSploit and the duplica
 
 With other words, `self.implant()` is a final phase that is being sent if payload is phased (staged). Each payload with `self.implant()` can be called phased (staged).
 
-This can be necessary if payload is bigger than the buffer size, then handler will need to send an intermediate phase and then the code from `self.implant()`.
+This can be necessary if payload is bigger than the buffer size, then handler will need to send an intermediate phase from `self.phase()` and then the code from `self.implant()`.
 
 ### Payload platform & arch (`Platform`, `Arch`)
 
