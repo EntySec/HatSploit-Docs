@@ -50,9 +50,7 @@ module Rouge
 
         rule %r{exploit|auxiliary|post}, Text
         rule %r{:}, Punctuation
-        rule %r{([^]]+)} do |m|
-          token Tokens::Hsf::Highlight, m[1]
-        end
+        rule %r{([^]]+)}, Keyword::Constant
         rule %r{]}, Punctuation
         rule %r{>}, Punctuation, :pop!
       end
