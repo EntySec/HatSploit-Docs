@@ -37,7 +37,7 @@ module Rouge
       state :root do
         mixin :whitespace
 
-        rule %r{^(hsf\d?|pwny)}, Tokens::Hsf::Prompt, :hsf_prompt
+        rule %r{^([hsf\d?:|pwny)}, Tokens::Hsf::Prompt, :hsf_prompt
         rule %r{^\[-\]}, Tokens::Hsf::Error
         rule %r{^\[\+\]}, Tokens::Hsf::Good
         rule %r{^\[\*\]}, Tokens::Hsf::Status
@@ -48,9 +48,9 @@ module Rouge
       state :hsf_prompt do
         mixin :whitespace
 
-        rule %r{(hsf: )?(exploit|auxiliary|post)(:)([^\]]+)(\])}, 
-          [Tokens::Hsf::Prompt, Text, Punctuation, Tokens::Hsf::Error, Punctuation]
-        rule %r{>}, Punctuation, :pop!
+        rule %r{(exploit|auxiliary|post)(:)([^\]]+)(\])}, 
+          [Text, Punctuation, Tokens::Hsf::Error, Punctuation]
+        rule %r{(]>)}, Punctuation, :pop!
       end
     end
   end
