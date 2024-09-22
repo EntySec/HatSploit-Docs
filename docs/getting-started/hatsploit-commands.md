@@ -6,7 +6,7 @@ nav_order: 3
 ---
 
 ```hsf
-[hsf: exploit: %redGeneric Exploit%end]>
+[hsf: exploit: redGeneric Exploitend]>
 [*] Running...
 [+] Exploited!
 [-] Whatasigma?!
