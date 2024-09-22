@@ -1,0 +1,23 @@
+.language-mermaid .label {
+    text-transform: inherit;
+}
+
+.language-hsf .zp {
+    text-decoration: underline;
+}
+
+.language-hsf .ze {
+    color: #960050;
+}
+
+.language-hsf .zg {
+    color: #859900;
+}
+
+.language-hsf .zs {
+    color: #268bd2;
+}
+
+.language-hsf .zw {
+    color: orange;
+}
