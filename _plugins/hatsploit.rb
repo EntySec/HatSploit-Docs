@@ -48,7 +48,7 @@ module Rouge
       state :hsf_prompt do
         mixin :whitespace
 
-        rule %r{((exploit|auxiliary|post)(:)([^\]]+)(\])}, 
+        rule %r{(exploit|auxiliary|post)(:)([^\]]+)(\])}, 
           [Text, Punctuation, Tokens::Hsf::Error, Punctuation]
 
         rule %r{>}, Punctuation, :pop!
