@@ -49,9 +49,9 @@ module Rouge
         mixin :whitespace
 
         rule %r{exploit|auxiliary|post}, Text
-        rule %r{:}, Punctuation
-        rule %r{([^]]+)}, Keyword::Constant
-        rule %r{]}, Punctuation
+        rule %r{\:}, Punctuation
+        rule %r{\]}, Punctuation
+        rule %r{[\w/]+}, Keyword::Constant
         rule %r{>}, Punctuation, :pop!
       end
     end
