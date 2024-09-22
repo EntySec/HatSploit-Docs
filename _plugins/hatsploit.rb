@@ -41,7 +41,7 @@ module Rouge
         rule %r{^\[\+\]}, Tokens::Hsf::Good
         rule %r{^\[\*\]}, Tokens::Hsf::Status
         rule %r{^\[\!\]}, Tokens::Hsf::Warning
-        rule %r{\%red(.*?)\%end}, Tokens::Hsf::Error
+        rule %r{^red(.+)end}, Tokens::Hsf::Error
         rule %r{.+}, Text
       end
     end
