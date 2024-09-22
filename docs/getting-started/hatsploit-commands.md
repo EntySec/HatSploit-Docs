@@ -5,6 +5,29 @@ parent: Getting started
 nav_order: 3
 ---
 
+```msf
+msf6 exploit(windows/smb/ms17_010_eternalblue) > advanced
+
+Module advanced options (exploit/windows/smb/ms17_010_eternalblue):
+
+   Name                    Current Setting                     Required  Description
+   ----                    ---------------                     --------  -----------
+   CHOST                                                       no        The local client address
+   CPORT                                                       no        The local client port
+   CheckModule             auxiliary/scanner/smb/smb_ms17_010  yes       Module to check with
+   ConnectTimeout          10                                  yes       Maximum number of seconds to establish a TCP connection
+   ... etc ...
+
+Payload advanced options (windows/x64/meterpreter/reverse_tcp):
+
+   Name                         Current Setting  Required  Description
+   ----                         ---------------  --------  -----------
+   AutoLoadStdapi               true             yes       Automatically load the Stdapi extension
+   AutoRunScript                                 no        A script to run automatically on session creation.
+   AutoSystemInfo               true             yes       Automatically capture system information on
+   ... etc ...
+```
+
 This is a HatSploit interface commands reference. Here you can find all commands, their usages and syntax.
 
 * [Core Commands](#Core-Commands)
