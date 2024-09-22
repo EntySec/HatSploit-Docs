@@ -37,7 +37,7 @@ module Rouge
       state :root do
         mixin :whitespace
 
-        rule %r{^(hsf\d?|pwny)}, Tokens::Hsf::Prompt, :hsf_prompt
+        rule %r{^(hsf\d?|pwny)}, Tokens::Hsf::Prompt
         rule %r{^\[-\]}, Tokens::Hsf::Error
         rule %r{^\[\+\]}, Tokens::Hsf::Good
         rule %r{^\[\*\]}, Tokens::Hsf::Status
