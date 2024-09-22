@@ -5,10 +5,7 @@ parent: Getting started
 nav_order: 3
 ---
 
-{{ "\033[34mHello, World!\033[0m" | ansi_to_html }}
-
 ```hsf
-{{ "\033[34mHello, World!\033[0m" | ansi_to_html }}
 [hsf: exploit: Generic Exploit]>
 [*] Running...
 [+] Exploited!
