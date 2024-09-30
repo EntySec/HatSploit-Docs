@@ -5,14 +5,6 @@ parent: Getting started
 nav_order: 3
 ---
 
-```hsf
-[hsf: exploit: Generic Exploit]>
-[*] Running...
-[+] Exploited!
-[-] Whatasigma?!
-pwny:/ felix# exit
-```
-
 This is a HatSploit interface commands reference. Here you can find all commands, their usages and syntax.
 
 * [Core Commands](#Core-Commands)
@@ -25,84 +17,50 @@ This is a HatSploit interface commands reference. Here you can find all commands
 
 ## Core Commands
 
-[`clear`](#clear) | [`exit`](#exit) | [`help`](#help) | [`search`](#search) | [`show`](#show)
+[`clear`](#clear) | [`exit`](#exit) | [`help`](#help) | [`quit`](#quit) | [`search`](#search)
 
 ### `clear`
 
-Clear terminal window.
+* Clear terminal window
 
-```
-Usage: clear
-```
+Simply clear terminal window and delete all previous output.
 
 ### `exit`
 
-Exit HatSploit Framework.
+* Exit console
 
-```
-Usage: exit [option]
-
-  -h, --help   Show this help message.
-  -f, --force  Force exit, ignoring active jobs.
-```
+Exit console.
 
 ### `help`
 
-Show available commands.
+* Show all available commands
 
-```
-Usage: help
-```
+Display all commands that are available in the console. Result of this command may vary depending on what system Pwny is running on and console configuration.
+
+### `quit`
+
+* Exit console
+
+Exit console.
 
 ### `search`
 
+* Search payloads, modules and plugins
+
+<details markdown="block">
+<summary>Usage</summary>
+
+```
+usage: search [-h] [-f FILTER] keyword
+
 Search payloads, modules and plugins.
 
+positional arguments:
+  keyword               Keyword to search for.
+
+options:
+  -h, --help            show this help message and exit
+  -f FILTER, --filter FILTER
+                        Filter search result separated by comma (e.g. CVE:2020-12345)
 ```
-Usage: search [option] [<keyword>]
-
-  -w, --where [payloads|modules|plugins]  Select where search.
-```
-
-## Database Commands
-
-[`module_db`](#module_db) | [`payload_db`](#payload_db) | [`plugin_db`](#plugin_db)
-
-### `module_db`
-
-Manage module databases.
-
-```
-Usage: module_db <option> [arguments]
-
-  -l, --list                        List all connected module databases.
-  -d, --disconnect <name>           Disconnect specified module database.
-  -c, --connect <name> <path>       Connect new module database.
-  -b, --build <path> <output_path>  Build module database from modules path.
-```
-
-### `payload_db`
-
-Manage payload databases.
-
-```
-Usage: payload_db <option> [arguments]
-
-  -l, --list                        List all connected payload databases.
-  -d, --disconnect <name>           Disconnect specified payload database.
-  -c, --connect <name> <path>       Connect new payload database.
-  -b, --build <path> <output_path>  Build payload database from payloads path.
-```
-
-### `plugin_db`
-
-Manage plugin databases.
-
-```
-Usage: plugin_db <option> [arguments]
-
-  -l, --list                        List all connected plugin databases.
-  -d, --disconnect <name>           Disconnect specified plugin database.
-  -c, --connect <name> <path>       Connect new plugin database.
-  -b, --build <path> <output_path>  Build plugin database from plugins path.
-```
+</details>

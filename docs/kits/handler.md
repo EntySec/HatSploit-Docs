@@ -13,7 +13,7 @@ nav_order: 2
 from hatsploit.lib.module.basic import *
 
 class HatSploitModule(Module, Handler):
-    ... snip ...
+    ...
 ```
 
 **payload:**
@@ -22,7 +22,7 @@ class HatSploitModule(Module, Handler):
 from hatsploit.lib.payload.basic import *
 
 class HatSploitPayload(Payload, Handler):
-    ... snip ...
+    ...
 ```
 
 ## Options
@@ -64,11 +64,10 @@ class HatSploitPayload(Payload, Handler):
 This example below is a part of module, which exploits RCE vulnerability and passes the exploit to handler.
 
 ```python
-... snip...
-
+...
 
 def exploit(self, command):
-    ... snip ...
+    ...
 
 def run(self):
     self.module_handle(

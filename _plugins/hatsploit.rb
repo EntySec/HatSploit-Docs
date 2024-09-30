@@ -15,6 +15,7 @@ module Rouge
       token :Good, "#{SHORTNAME}g"
       token :Status, "#{SHORTNAME}s"
       token :Warning, "#{SHORTNAME}w"
+      token :Info, "#{SHORTNAME}i"
     end
   end
 
@@ -37,21 +38,32 @@ module Rouge
       state :root do
         mixin :whitespace
 
-        rule %r{^(\[hsf\d?:|pwny)}, Tokens::Hsf::Prompt, :hsf_prompt
+        rule %r{^(\[hsf\d?)}, Text, :hsf_prompt
+        rule %r{^(pwny:)}, Text, :pwny_prompt
         rule %r{^\[-\]}, Tokens::Hsf::Error
         rule %r{^\[\+\]}, Tokens::Hsf::Good
         rule %r{^\[\*\]}, Tokens::Hsf::Status
         rule %r{^\[\!\]}, Tokens::Hsf::Warning
+        rule %r{^(\[i\]|\[\?\]|\[>\])}, Tokens::Hsf::Info
         rule %r{.+}, Text
       end
 
       state :hsf_prompt do
         mixin :whitespace
 
-        rule %r{(exploit|auxiliary|post)(:)([^\]]+)(\])}, 
-          [Text, Punctuation, Tokens::Hsf::Error, Punctuation]
-
+        rule %r{exploit|auxiliary|post}, Text
+        rule %r{:}, Punctuation
+        rule %r{\]}, Punctuation
+        rule %r{[\w/]+}, Tokens::Hsf::Error
         rule %r{>}, Punctuation, :pop!
+      end
+
+      state :pwny_prompt do
+        mixin :whitespace
+
+        rule %r{(/[\w/]*)(?=\s)}, Tokens::Hsf::Prompt
+        rule %r{(\w+)}, Tokens::Hsf::Status
+        rule %r{\$|\#}, Punctuation, :pop!
       end
     end
   end

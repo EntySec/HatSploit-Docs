@@ -24,7 +24,7 @@ self.print_information("Test.")
 
 **output:**
 
-```
+```hsf
 Test.
 [*] Test...
 [-] Test!
@@ -44,7 +44,7 @@ self.print_table('Credentials', headers, *data)
 
 **output:**
 
-```
+```hsf
 Credentials:
 
   Username    Password
@@ -62,21 +62,8 @@ self.inpit_arrow("Your input: ")
 
 **output:**
 
-```
+```hsf
 Your input:
 [?] Are you sure [y/N]
 [>] Your input:
-```
-
-## Tools API
-
-* `self.background(target: Callable[..., Any], args: list = [], kwargs: dict = {})` - Background a target.
-
-**example:**
-
-```python
-def target(num):
-    time.sleep(num)
-
-self.background(target, [100])
 ```

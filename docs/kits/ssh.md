@@ -12,7 +12,7 @@ from hatsploit.lib.module.basic import *
 from hatsploit.lib.module.ssh import SSH
 
 class HatSploitModule(Module, SSH):
-    ... snip ...
+    ...
 ```
 
 ## Options
