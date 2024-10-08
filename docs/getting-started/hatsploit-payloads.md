@@ -5,11 +5,15 @@ parent: Getting started
 nav_order: 6
 ---
 
-## About payloads
+After the successful exploitation, *exploit* module should have something to send in order to get a remote shell or any other kind of impact. This is where payloads come in action. HatSploit provides an extensive interface for payload development and supports all kinds of them:
 
-HatSploit payloads are sent to the target after successful exploitation of vulnerability by module.
+* *Shellcodes* - These payloads are highly architecture dependent due to that they are written in pure assembly. HatSploit enables payload authors to store payloads in assembly code rather then publishing compiled shellcodes.
+* *Scripts* - These payloads can be any script, from BASH, Python or PowerShell code to a single command.
 
-They can differ, from platform and style to architecture and execution.
+All payloads are different and are created for different purposes, however HatSploit has a strict payload system to distinguish them. There are two types of payload:
+
+* *Stager* - Payload that is sent first and the main purpose of which is to read the next (bigger) payload into memory and execute it.
+* *Staged* - Payload that can be sent by itself or after the stager. This payload is flexible and can contain multiple ways it can be executed, while *stager* has only one.
 
 ## Using payloads
 
@@ -17,7 +21,7 @@ To use a specific payload, you should first select the module that supports payl
 
 Let's take `exploit/linux/skybridge/100_110_code_execution` module that exploits the built-in backdoor in several routers and attempts to gain code execution.
 
-```hsf
+```entysec
 [hsf3]> search skybridge
 
 Modules:
@@ -50,7 +54,7 @@ Payload Options (linux/armle/shell_reverse_tcp):
 
 As you can see, we already have a payload preconfigured for us to use on an exploited system. You can invoke `info` command to find more information about the effects of the module.
 
-```hsf
+```entysec
 [hsf3: SkyBridge MB-A100/110 Remote Code Execution]> info
 
     Name: SkyBridge MB-A100/110 Remote Code Execution
@@ -84,3 +88,7 @@ Stability:
 Reliability:
   Module spawns weak (unstable) session
 ```
+
+## Developing the payload
+
+If you want to contribute and develop your own payload, you might find this guide useful - [Writing Payloads](/docs/development/writing-payloads)

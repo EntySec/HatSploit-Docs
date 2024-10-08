@@ -2,26 +2,26 @@
     text-transform: inherit;
 }
 
-.language-hsf .zp {
+.language-entysec .zp {
     text-decoration: underline;
 }
 
-.language-hsf .ze {
+.language-entysec .ze {
     color: #960050;
 }
 
-.language-hsf .zg {
+.language-entysec .zg {
     color: #859900;
 }
 
-.language-hsf .zs {
+.language-entysec .zs {
     color: #268bd2;
 }
 
-.language-hsf .zi {
+.language-entysec .zi {
     font-weight: bold;
 }
 
-.language-hsf .zw {
+.language-entysec .zw {
     color: orange;
 }

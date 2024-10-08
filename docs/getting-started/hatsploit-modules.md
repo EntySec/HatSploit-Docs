@@ -5,24 +5,34 @@ parent: Getting started
 nav_order: 5
 ---
 
-## About Modules
+Since HatSploit Framework is built aroung a modular system, all the additional functional including exploits, tools or post-exploitation capabilities are implemented within modules.
 
-Since HatSploit Framework has a modular system, all the additional functional including exploits, tools or post-exploitation capabilities are implemented within modules.
+There are the categories that are commonly used:
 
-Modules can be different. They can scan the target for opened ports, exploit security flaws or spoof the traffic.
+* *Auxiliary* - Module provides scanning functionality and only interacts with the target by scanning it.
+* *Exploit* - Module provides an exploit for a specific vulnerability and can be used to exploit it and gain any type of access if used with payload or for DoS, information disclosure and any other impact.
+* *Post* - Module provides a post-exploitation functionality and used when the access to the target system is gained (by exploit module for example).
+
+In short, modules can be different. They can scan the target for opened ports, exploit security flaws or spoof the traffic.
 
 ## Using the module
 
-To use specific module, just type `use` and module name.
+To use specific module, just type `use` and provide module name or index as an argument.
 
-```hsf
+```entysec
 [hsf3]> use exploit/linux/rompager/multi_password_disclosure
 [hsf3: RomPager Multi Password Disclosure]> 
 ```
 
-**NOTE:** You can use the module by its number from `search` or `show` lists.
+{: .note }
+An argument for `use` command can be an index as mentioned above. This index can be obtained for the table produced by `search` or any other command that retrieves module list.
 
-```hsf
+When used, module information can be fetched with `info` command. It provides various descriptions, module authors, references and side effects (if specified).
+
+{: .note }
+`info` command can also be used with a module name or index as an argument. So in order to obtain module information it is not always required to switch to this module.
+
+```entysec
 [hsf3: RomPager Multi Password Disclosure]> info
 
     Name: RomPager Multi Password Disclosure
@@ -46,13 +56,14 @@ References:
   EDB: 33803
 ```
 
-Here we also used `info` command to obtain the general module information.
+The module selected as an example is an *exploit* for `RomPager 4.07` server-side software. It attempts to obtain credentials by sending a malicious requiest to the specified target.
 
-The module we just selected is an exploit for `RomPager 4.07` server. It takes few options and then tries to obtain credentials.
+Any module can be configured by a set of options that are predefined by a module author. Different modules have different options and they vary from module to module. Module options can be listed with `show options` (or shorter form - `options`) and can be set by `set` command. Module can also include advanced options that are hidden by default. They are optional and typically used only when high level of configuration is requied. These options can be displayed by `show advanced` command.
 
-You can list module options using `options` command and list advanced options using `advanced` command.
+{: .note }
+`unset` command can be invoked to empty the option value.
 
-```hsf
+```entysec
 [hsf7: exploit: RomPager Multi Password Disclosure]> options
  
 Module Options (exploit/linux/rompager/multi_password_disclosure):
@@ -64,18 +75,14 @@ Module Options (exploit/linux/rompager/multi_password_disclosure):
     ssl         no       no          Use SSL.
     timeout     10       no          Connection timeout.
     username    admin    yes         Default username.
-```
 
-Options can be set using `set` command and can be set to `None` using `unset`.
-
-```hsf
 [hsf7: exploit: RomPager Multi Password Disclosure]> set host 192.168.1.56
 [i] host => 192.168.1.56
 ```
 
-Finally, to execute the module, you should use command `run`.
+After all the configuration steps are completed, module can be executed by `run` command.
 
-```hsf
+```entysec
 [hsf7: exploit: RomPager Multi Password Disclosure]> run
  
  
@@ -88,7 +95,11 @@ Credentials:
 [+] Exploit module completed!
 ```
 
-**NOTE:** If you want to run module as a background job, use `run -j`.
+{: .note }
+There are different variations of `run` command. For example: `exploit`, `start` and `execute` - they are all just shortcuts.
+
+{: .note }
+If you want to run module as a background job while switching to the next task, use `run -j`. In you want module to execute in loop, use `run -l`.
 
 ## Developing the module
 

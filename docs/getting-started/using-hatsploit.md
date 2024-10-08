@@ -1,13 +1,13 @@
 ---
 layout: default  
 title: Using HatSploit  
-parent: Getting Started  
+parent: Getting started  
 nav_order: 2
 ---
 
 The key question many ask is: **How do you start working with HatSploit?** This guide aims to provide a comprehensive overview of how to begin using the HatSploit Framework effectively.
 
-## Initial Launch
+## Initial launch
 
 To get started with HatSploit, the first step is to launch the framework. Open your terminal and execute the following command:
 
@@ -17,19 +17,19 @@ hsf
 
 Once this command is run, you will be prompted with a message to accept the terms of service. You need to confirm your agreement to proceed further.
 
-```hsf
+```entysec
 [?] Accept HatSploit Framework Terms of Service? [y/n]
 ```
 
 After accepting the terms, HatSploit will ask whether you'd like to build and connect its base databases. This process involves loading all the framework’s essential modules, plugins, and payloads, and saving them to the database for faster access.
 
-```hsf
+```entysec
 [?] Do you want to build and connect base databases? [y/n]
 ```
 
 Once these initial setup steps are completed, the main HatSploit interface will be presented:
 
-```hsf
+```entysec
                      ___________
                     < HatSploit >
                      -----------
@@ -47,7 +47,7 @@ HatSploit Tip: You can run a module in the background by using `run -j`.
 [hsf3]>
 ```
 
-## Executing Commands
+## Executing commands
 
 HatSploit offers a variety of commands that allow you to interact with its functionality. To see a list of all available commands, you can simply type `help` or `?`. This will provide you with a list of commands alongside a description of their purpose.
 
@@ -55,7 +55,6 @@ HatSploit offers a variety of commands that allow you to interact with its funct
 Core Commands:
 
     Command    Description
-    -------    -----------
     clear      Clear terminal window.
     exit       Exit console.
     help       Show all available commands.
@@ -65,7 +64,7 @@ Core Commands:
 
 Each command is designed to assist you in navigating through the framework's features with ease. Familiarizing yourself with these commands will significantly enhance your user experience.
 
-## Run Options
+## Startup options
 
 HatSploit provides several run options that can be selected via command-line arguments at startup. These options allow you to customize the execution of the framework according to your needs.
 
@@ -96,7 +95,7 @@ Options:
 
 These command-line options provide a more advanced and flexible way to interact with HatSploit, especially when automating tasks or managing multiple instances.
 
-## HatSploit Startup File
+## HatSploit startup file
 
 The HatSploit startup file is a crucial feature for automating repetitive tasks. It contains all the commands that should be executed automatically on startup. This file is stored in the HatSploit workspace at:
 

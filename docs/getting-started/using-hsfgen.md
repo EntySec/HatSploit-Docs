@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Using hsfgen
-parent: Getting Started
+parent: Getting started
 nav_order: 9
 ---
 
@@ -70,13 +70,13 @@ The following options allow you to explore the available formats, payloads, and 
 
 To generate a basic `linux/x64/shell_reverse_tcp` payload and encode it with `x64/xor`, you can use the following command:
 
-```
+```shell
 hsfgen -p linux/x64/shell_reverse_tcp --options rhost=127.0.0.1,rport=8888 -e x64/xor
 ```
 
 The output will be similar to:
 
-```hsf
+```entysec
 [*] Attempting to generate linux/x64/shell_reverse_tcp...
 [i] Payload will be encoded with x64/xor
 [*] Writing raw payload (112 bytes)...

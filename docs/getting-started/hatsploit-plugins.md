@@ -13,16 +13,17 @@ If you are interested in learning how to develop and write your own plugins for 
 
 To demonstrate how plugins work, let’s try loading one of the fun plugins included with HatSploit – `cowsay`. The framework provides a dedicated `load` command for this purpose, and its usage is quite simple:
 
-```hsf
+```entysec
 [hsf]> load
 Usage: load <plugin|number>
 ```
 
-**Note:** Plugins can be loaded either by their name or by their number, as listed in the output of `search` or `show` commands.
+{: .note }
+An argument for `load` command can be an index as mentioned above. This index can be obtained for the table produced by `search` or any other command that retrieves plugin list.
 
 When you load the `cowsay` plugin, the following amusing cow message will appear:
 
-```hsf
+```entysec
 [hsf]> load cowsay
 [*] Loading cowsay plugin...
  ________________
@@ -40,17 +41,16 @@ When you load the `cowsay` plugin, the following amusing cow message will appear
 
 Once the plugin is loaded, it adds a new command to the main HatSploit interface.
 
-```hsf
+```entysec
 Cowsay Commands:
  
     Command    Description                
-    -------    -----------                
     cowsay     Ask the cow to say a message.
 ```
 
 Now, executing the newly available `cowsay` command with the argument `HatSploit is Great` will produce the following output:
 
-```hsf
+```entysec
 [hsf]> cowsay 'HatSploit is Great'
  ____________________
 < HatSploit is Great >
@@ -66,13 +66,18 @@ Now, executing the newly available `cowsay` command with the argument `HatSploit
 
 When you no longer need a plugin, you can free up space by unloading it using the `unload` command:
 
-```hsf
+```entysec
 [hsf]> unload
 Usage: unload <plugin|number>
 ```
 
-**Note:** Just like with the `load` command, plugins can be unloaded by their name or their corresponding number from the `search` or `show` lists.
+{: .note }
+An argument for `unload` command can be an index as mentioned above. This index can be obtained for the table produced by `search` or any other command that retrieves plugin list.
 
 ## Discovering more plugins
 
 If you are eager to explore and utilize additional plugins, a more comprehensive collection can be found here - [HatSploit Plugins](/docs/plugins).
+
+## Developing the plugin
+
+If you want to contribute and develop your own plugin, you might find this guide useful - [Writing Plugins](/docs/development/writing-plugins)

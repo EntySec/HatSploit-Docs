@@ -1,13 +1,13 @@
 ---
 layout: default
 title: Installation
-parent: Getting Started
+parent: Getting started
 nav_order: 1
 ---
 
 This guide provides step-by-step instructions on setting up the required components and installing the HatSploit Framework on your system.
 
-## System Requirements
+## System requirements
 
 Before proceeding with the installation, please ensure your system meets the following basic requirements:
 

@@ -7,11 +7,11 @@ nav_order: 8
 
 HatSploit has the ability to execute interface commands from the given file.
 
-## Writing Script
+## Writing script
 
-I'll create `dirscan.hsf` file, it will be a HatSploit script that scans all directories on `127.0.0.1:8080`.
+The HatSploit script provided below scans all directories at `http://127.0.0.1:8080/`.
 
-```
+```entysec
 use auxiliary/generic/scanner/directory_scanner
     set host 127.0.0.1
     set port 8080
@@ -22,4 +22,5 @@ And after I wrote this simple script, I'll execute it with HatSploit.
 
 > hsf -s script.hsf
 
-**NOTE:** If you do not want to exit after script execution completed, just use `--no-exit` argument.
+{: .note }
+If you do not want to exit after script execution completed, just use `--no-exit` argument.
