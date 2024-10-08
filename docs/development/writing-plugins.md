@@ -1,110 +1,70 @@
 ---
 layout: default
-title: Writing plugins
+title: Writing Plugins
 parent: Development
 nav_order: 2
 ---
 
-Plugins are intended to extend the basic HatSploit command list.
-After deciding what your plugin should do, take this template and edit it for your needs.
+# Writing Plugins for HatSploit
+
+Plugins in HatSploit are designed to extend the basic command list, providing custom functionality that integrates seamlessly with the framework. Once you have determined the purpose of your plugin, you can use the following template as a starting point and modify it according to your needs.
 
 ```python
-"""
+""" 
 This plugin requires HatSploit: https://hatsploit.com
 Current source: https://github.com/EntySec/HatSploit
-"""
+""" 
 
-from hatsploit.lib.plugin import Plugin
+from badges.cmd import Command
+from hatsploit.lib.core.plugin import Plugin
 
 
 class HatSploitPlugin(Plugin):
     def __init__(self):
-        super().__init__()
-
-        self.details.update({
-            'Name': "full name",
-            'Plugin': "name",
+        super().__init__({
+            'Name': "",
+            'Plugin': "",
             'Authors': [
                 'Your name (your nickname) - plugin developer',
             ],
-            'Description': "description.",
+            'Description': "",
         })
 
         self.commands = {
-            'category': {
-                'command': {
-                    'Description': "description",
-                    'Usage': "command",
-                    'MinArgs': 0,
-                }
-            }
+            Command({
+                'Name': 'command',
+                'Description': "",
+                'MinArgs': 1, # Minimum number of arguments
+                'Options': [
+                    ( # command options (argparse)
+                        ('-o', '--option'),
+                        {
+                            'help': "",
+                            'type': int
+                        }
+                    ),
+                    # other command options
+                ]
+            })
         }
 
-    def command(self, argc, argv):
+    # command body, name of method should be a name of command
+    def command(self, args):
         pass
 
+    # method executed during the loading process
     def load(self):
         pass
 
+    # method executed during the unloading process
     def unload(self):
         pass
 ```
 
-**NOTE:** All plugins should inherit from `Plugin` (`hatsploit.lib.plugin`), otherwise plugin won't be loaded.
+**Note:** Every plugin should inherit from the `Plugin` class (`hatsploit.lib.plugin`). If this inheritance is missing, the plugin will not be loaded properly by HatSploit.
 
-Let's go through all the necessary methods:
+## Examples and Best Practices
 
-* `self.details` - Is a dictionary containing all necessary information (`Full name`, `name`, `description`, `authors`, etc.)
-* `self.commands` - Is a dictionary that contains all categories and commands implemented by the plugin.
-* `self.load()` - Method, which is called when plugin is being loaded.
-* `self.unload()` - Method, which is called when plugin is being unloaded.
-* `self.command()` - Method, which contains code of `command` specified in the `self.commands`.
+If you are new to writing plugins for HatSploit, it is highly recommended that you review existing plugins in the [main repository](https://github.com/EntySec/HatSploit/tree/main/hatsploit/plugins). These existing plugins can serve as valuable references for understanding the structure and functionality of plugins within the framework.
 
-Acknowledge that `self.commands` contains category and then the list of commands that belong to this category. For example:
-
-```python
-self.commands = {
-    'My Category': {
-        'command1': {
-            'Description': "description",
-            'Usage': "command1",
-            'MinArgs': 0,
-        },
-        'command2': {
-            'Description': "description",
-            'Usage': "command2",
-            'MinArgs': 0,
-        },
-    }
-}
-```
-
-* `Description` - Command description.
-* `Usage` - Usage which is displayed if `MinArgs` condition is not achieved.
-* `MinArgs` - Minimum necessary arguments. (e.g. if your command requires one mandatory argument, then `MinArgs` should be `1`)
-
-**NOTE:** If your command has specific list of arguments that should be displayed if `MinArgs` condition is not achieved, add `Options` like this:
-
-```python
-'Options': {
-    '-e': ['<arg>', 'Example'],
-}
-```
-
-Moreover, commands are implemented within methods which have the same names as their commands from `self.commands`. For example (for previous dictionary):
-
-```python
-def command1(self, argc, argv):
-    ... snip ...
-
-def command2(self, argc, argv):
-    ... snip ...
-```
-
-* `argc` - Number or arguments. (including command name)
-* `argv` - List of arguments. (including command name, which is `argv[0]`)
-
-## Examples
-
-You can always refer to the [main repository](https://github.com/EntySec/HatSploit/tree/main/hatsploit/plugins) which contains some plugins and rely on them.
-We will be glad if you first explore already existing plugins before writing new ones.
+We encourage you to explore these resources and learn from them before developing new plugins. This practice will help you follow consistent patterns and ensure the best integration with HatSploit's functionality.

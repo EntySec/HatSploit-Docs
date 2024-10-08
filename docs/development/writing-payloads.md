@@ -80,17 +80,9 @@ For now, HatSploit does accept these platforms and architectures:
 
 These types can be used for payloads:
 
-* `one_side` - payload is sent once and no session is opened since no data is being received from payload.
-* `reverse_tcp` - payload is sent and reverse TCP connection is being established.
-* `bind_tcp` - payload is sent and bind TCP connection is being established.
-
-### Payload rank (`Rank`)
-
-Payload rank is an approximate level of risk that can be caused by the payload. These levels can be set for the payload:
-
-* `low` - No serious impact at all or a low impact.
-* `medium` - Medium impact, might not cause damage but affect the target.
-* `high` - High impact, may cause damage to the target.
+* `ONE_SIDE` - payload is sent once and no session is opened since no data is being received from payload.
+* `REVERSE_TCP` - payload is sent and reverse TCP connection is being established.
+* `BIND_TCP` - payload is sent and bind TCP connection is being established.
 
 ### Payload session (`Session`)
 
@@ -108,7 +100,7 @@ So, if your payload has type of `reverse_tcp` or `bind_tcp`, it should inherit f
 from hatsploit.lib.payload.basic import *
 
 class HatSploitPayload(Payload, Handler):
-    ... snip ...
+    ...
 ```
 
 With payload handler you won't need to declare `rhost` and `rport` options by yourself and can access their values as `self.rhost.value` and `self.rport.value`.

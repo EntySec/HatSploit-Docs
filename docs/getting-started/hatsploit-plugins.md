@@ -1,28 +1,26 @@
 ---
 layout: default
 title: HatSploit Plugins
-parent: Getting started
+parent: Getting Started
 nav_order: 4
 ---
 
-## About Plugins
+HatSploit plugins are designed to enhance the framework by allowing users to customize the main interface and introduce new commands. Plugins offer extended functionality and enable users to tailor the framework according to their specific requirements.
 
-HatSploit plugins are intended to customize the main interface and add new commands to it.
+If you are interested in learning how to develop and write your own plugins for HatSploit, you can refer to the documentation available here: [Writing Plugins](/docs/development/writing-plugins).
 
-For learning how to write HatSploit plugins: [here](/docs/development/writing-plugins)
+## Loading a plugin
 
-## Load Plugin
-
-First, we'll try to load the first HatSploit fun plugin - `cowsay`. For this purpose, HatSploit has its own `load` command with pretty simple usage.
+To demonstrate how plugins work, let’s try loading one of the fun plugins included with HatSploit – `cowsay`. The framework provides a dedicated `load` command for this purpose, and its usage is quite simple:
 
 ```hsf
 [hsf]> load
 Usage: load <plugin|number>
 ```
 
-**NOTE:** You can load the plugin by its number from `search` or `show` lists.
+**Note:** Plugins can be loaded either by their name or by their number, as listed in the output of `search` or `show` commands.
 
-After loading the `cowsay` plugin, this cow will appear.
+When you load the `cowsay` plugin, the following amusing cow message will appear:
 
 ```hsf
 [hsf]> load cowsay
@@ -40,17 +38,17 @@ After loading the `cowsay` plugin, this cow will appear.
 [+] Successfully loaded cowsay plugin!
 ```
 
-Also, after this, the new command will be added to the main HatSploit interface.
+Once the plugin is loaded, it adds a new command to the main HatSploit interface.
 
 ```hsf
 Cowsay Commands:
  
     Command    Description                
     -------    -----------                
-    cowsay     Ask cow to say message.
+    cowsay     Ask the cow to say a message.
 ```
 
-Executing the new command `cowsay` with the argument `HatSploit is Great` will give us this result.
+Now, executing the newly available `cowsay` command with the argument `HatSploit is Great` will produce the following output:
 
 ```hsf
 [hsf]> cowsay 'HatSploit is Great'
@@ -64,17 +62,17 @@ Executing the new command `cowsay` with the argument `HatSploit is Great` will g
                  ||     ||
 ```
 
-## Unload Plugin
+## Unloading a plugin
 
-To free space, you can unload the loaded plugin, just use the `unload` command.
+When you no longer need a plugin, you can free up space by unloading it using the `unload` command:
 
 ```hsf
 [hsf]> unload
 Usage: unload <plugin|number>
 ```
 
-**NOTE:** You can unload the plugin by its number from `search` or `show` lists.
+**Note:** Just like with the `load` command, plugins can be unloaded by their name or their corresponding number from the `search` or `show` lists.
 
-## More plugins
+## Discovering more plugins
 
-If you are interested in using plugins, you can find more here - [Plugins](/docs/plugins)
+If you are eager to explore and utilize additional plugins, a more comprehensive collection can be found here - [HatSploit Plugins](/docs/plugins).

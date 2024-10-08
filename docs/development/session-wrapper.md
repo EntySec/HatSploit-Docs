@@ -17,9 +17,7 @@ from hatsploit.lib.session import Session
 
 class HatSploitSession(Session):
     def __init__(self):
-        super().__init__()
-
-        self.details.update({
+        super().__init__({
             'Post': "",
             'Platform': Platform,
             'Arch': Arch,
@@ -54,7 +52,7 @@ class HatSploitSession(Session):
 
 Let's go through all the necessary methods:
 
-* `self.details` - Is a dictionary containing all necessary information about the session.
+* `self.info` - Is a dictionary containing all necessary information about the session.
 * `self.open(client)` - Opens a session for a client.
 * `self.close()` - Closes session.
 * `self.heartbeat()` - Checks if session is alive.

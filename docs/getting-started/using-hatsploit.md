@@ -1,29 +1,35 @@
 ---
-layout: default
-title: Using HatSploit
-parent: Getting started
+layout: default  
+title: Using HatSploit  
+parent: Getting Started  
 nav_order: 2
 ---
 
-So, the main question is - How to start working with HatSploit? We have an answer, this guide is for learning how to use HatSploit.
+The key question many ask is: **How do you start working with HatSploit?** This guide aims to provide a comprehensive overview of how to begin using the HatSploit Framework effectively.
 
-## First Run
+## Initial Launch
 
-First, you need to run HatSploit, for this, open your terminal and type `hsf`. After this, you will see the terms of service message, accept it, and continue.
+To get started with HatSploit, the first step is to launch the framework. Open your terminal and execute the following command:
+
+```bash
+hsf
+```
+
+Once this command is run, you will be prompted with a message to accept the terms of service. You need to confirm your agreement to proceed further.
 
 ```hsf
 [?] Accept HatSploit Framework Terms of Service? [y/n]
 ```
 
-After this, HatSploit will ask you to build base databases, this means that HatSploit will load all modules, plugins, and payloads and will save them to the base database.
+After accepting the terms, HatSploit will ask whether you'd like to build and connect its base databases. This process involves loading all the framework’s essential modules, plugins, and payloads, and saving them to the database for faster access.
 
 ```hsf
 [?] Do you want to build and connect base databases? [y/n]
 ```
 
-After all these setup steps completed, the main HatSploit interface appears.
+Once these initial setup steps are completed, the main HatSploit interface will be presented:
 
-```
+```hsf
                      ___________
                     < HatSploit >
                      -----------
@@ -31,21 +37,19 @@ After all these setup steps completed, the main HatSploit interface appears.
       ._.-.___.' (`\  /
      //(        ( `'
     '/ )\ ).__. )
-    ' <' `\ ._/'\
-       `   \     \
-
+    ' <' `\ ._/'       `   \     
     --=[ HatSploit Framework 3.0.0 unfulf1ll3d (https://hatsploit.com)
 --==--=[ Developed by EntySec (https://entysec.com)
     --=[ 55 modules | 60 payloads | 2 encoders | 3 plugins
 
-HatSploit Tip: You can run module in background, just use run -j
+HatSploit Tip: You can run a module in the background by using `run -j`.
 
 [hsf3]>
 ```
 
-## Using Commands
+## Executing Commands
 
-HatSploit has various commands for interacting with its function, you can type `help` or `?` for getting a list of these commands. After doing this, you will see a description for each of them.
+HatSploit offers a variety of commands that allow you to interact with its functionality. To see a list of all available commands, you can simply type `help` or `?`. This will provide you with a list of commands alongside a description of their purpose.
 
 ```
 Core Commands:
@@ -57,13 +61,13 @@ Core Commands:
     help       Show all available commands.
     quit       Exit console.
     exit       Exit HatSploit Framework.
-
-... snip ...   
 ```
 
-## Using Run Options
+Each command is designed to assist you in navigating through the framework's features with ease. Familiarizing yourself with these commands will significantly enhance your user experience.
 
-Run options are options that you can select on startup via command-line arguments.
+## Run Options
+
+HatSploit provides several run options that can be selected via command-line arguments at startup. These options allow you to customize the execution of the framework according to your needs.
 
 ```
 usage: hsf [-h] [-c] [--check-modules] [--check-payloads] [--check-encoders]
@@ -73,23 +77,31 @@ usage: hsf [-h] [-c] [--check-modules] [--check-payloads] [--check-encoders]
 Modular penetration testing platform that enables you to write, test, and
 execute exploit code.
 
-options:
-  -h, --help            show this help message and exit
-  -c, --check           Check base modules, payloads, encoders and plugins.
+Options:
+  -h, --help            Show this help message and exit.
+  -c, --check           Check base modules, payloads, encoders, and plugins.
   --check-modules       Check only base modules.
   --check-payloads      Check only base payloads.
   --check-encoders      Check only base encoders.
   --check-plugins       Check only base plugins.
   --rpc                 Start HatSploit RPC server.
-  --host HOST           HatSploit RPC server host. [default: 127.0.0.1]
-  --port PORT           HatSploit RPC server port. [default: 5000]
+  --host HOST           Specify HatSploit RPC server host. [Default: 127.0.0.1]
+  --port PORT           Specify HatSploit RPC server port. [Default: 5000]
   -u, --update          Update HatSploit Framework.
   -s SCRIPT, --script SCRIPT
-                        Execute HatSploit commands from script file.
+                        Execute HatSploit commands from a script file.
   --no-exit             Do not exit after script execution.
-  --no-startup          Do not execute startup.hsf file.
+  --no-startup          Do not execute the startup.hsf file on startup.
 ```
 
-## HatSploit Startup file
+These command-line options provide a more advanced and flexible way to interact with HatSploit, especially when automating tasks or managing multiple instances.
 
-HatSploit startup file contains all commands that should be executed on startup. It is placed in the HatSploit workplace - `~/.hsf/startup.hsf`.
+## HatSploit Startup File
+
+The HatSploit startup file is a crucial feature for automating repetitive tasks. It contains all the commands that should be executed automatically on startup. This file is stored in the HatSploit workspace at:
+
+```
+~/.hsf/startup.hsf
+```
+
+By configuring this file, you can streamline your workflow by predefining certain actions to be executed every time HatSploit is launched.

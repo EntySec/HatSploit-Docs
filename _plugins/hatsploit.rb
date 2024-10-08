@@ -38,19 +38,20 @@ module Rouge
       state :root do
         mixin :whitespace
 
-        rule %r{^(\[hsf\d?)}, Text, :hsf_prompt
         rule %r{^(pwny:)}, Text, :pwny_prompt
         rule %r{^\[-\]}, Tokens::Hsf::Error
         rule %r{^\[\+\]}, Tokens::Hsf::Good
         rule %r{^\[\*\]}, Tokens::Hsf::Status
         rule %r{^\[\!\]}, Tokens::Hsf::Warning
         rule %r{^(\[i\]|\[\?\]|\[>\])}, Tokens::Hsf::Info
+        rule %r{^(\[)}, Text, :hsf_prompt
         rule %r{.+}, Text
       end
 
       state :hsf_prompt do
         mixin :whitespace
 
+        rule %r{hsf\d?}, Tokens::Hsf::Warning
         rule %r{exploit|auxiliary|post}, Text
         rule %r{:}, Punctuation
         rule %r{\]}, Punctuation
