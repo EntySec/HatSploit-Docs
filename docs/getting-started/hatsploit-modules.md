@@ -5,6 +5,11 @@ parent: Getting started
 nav_order: 5
 ---
 
+{: .note-title }
+> My note title
+>
+> A paragraph with a custom title callout
+
 Since HatSploit Framework is built aroung a modular system, all the additional functional including exploits, tools or post-exploitation capabilities are implemented within modules.
 
 There are the categories that are commonly used:
@@ -25,7 +30,8 @@ To use specific module, just type `use` and provide module name or index as an a
 ```
 
 {: .note }
-An argument for `use` command can be an index as mentioned above. This index can be obtained for the table produced by `search` or any other command that retrieves module list.
+An argument for `use` command can be an index as mentioned above. 
+This index can be obtained for the table produced by `search` or any other command that retrieves module list.
 
 When used, module information can be fetched with `info` command. It provides various descriptions, module authors, references and side effects (if specified).
 

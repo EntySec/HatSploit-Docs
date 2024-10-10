@@ -9,3 +9,20 @@ back_to_top_text: "Back to top"
 
 aux_links:
   Download HatSploit: https://github.com/EntySec/HatSploit
+
+callouts_level: quiet
+callouts:
+  highlight:
+    color: yellow
+  important:
+    title: Important
+    color: blue
+  new:
+    title: New
+    color: green
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: red
