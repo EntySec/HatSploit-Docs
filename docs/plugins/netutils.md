@@ -9,7 +9,7 @@ Network Utilities plugin provides various tools for communicating over the netwo
 
 ## Usage
 
-```hsf
+```entysec
 [hsf3]> load netutils
 
      _______________                        |*\_/*|________
@@ -32,14 +32,14 @@ Network Utilities plugin provides various tools for communicating over the netwo
 
 * `telnet` - Connect to TCP server.
 
-```hsf
+```entysec
 [hsf3]> telnet 127.0.0.1 8888
 Connected to 127.0.0.1!
 ```
 
 * `ssh` - Connect to SSH server.
 
-```hsf
+```entysec
 [hsf3]> ssh felix@127.0.0.1 22
 felix@127.0.0.1's password: **********
 Last login: Mon Sep 30 01:06:12 2024

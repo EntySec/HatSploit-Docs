@@ -9,7 +9,7 @@ Ngrok plugin provides an interface to manage ngrok forwarding rules from HatSplo
 
 ## Usage
 
-```hsf
+```entysec
 [hsf3]> load ngrok
 
                              __
@@ -26,7 +26,7 @@ Ngrok plugin provides an interface to manage ngrok forwarding rules from HatSplo
 
 * `ngrok` - Manage ngrok service.
 
-```hsf
+```entysec
 [hsf3]> ngrok
 usage: ngrok [-h] [-l] [-o PORT] [-c ID] [-a TOKEN]
 

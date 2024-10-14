@@ -9,7 +9,7 @@ Cowsay plugin provides a fun, visual representation of a cow saying the message.
 
 ## Usage
 
-```hsf
+```entysec
 [hsf3]> load cowsay
  ________________
 < Cow here, moo! >
@@ -27,7 +27,7 @@ Cowsay plugin provides a fun, visual representation of a cow saying the message.
 
 * `cowsay` - Ask cow to say message.
 
-```hsf
+```entysec
 [hsf3]> cowsay 'HatSploit is Great'
  ____________________
 < HatSploit is Great >
