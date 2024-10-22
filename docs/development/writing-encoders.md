@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Writing encoders
+title: Writing Encoders
 parent: Development
 nav_order: 5
 ---
@@ -16,46 +16,66 @@ This encoder requires HatSploit: https://hatsploit.com
 Current source: https://github.com/EntySec/HatSploit
 """
 
-from hatsploit.lib.encoder.basic import *
+from hatsploit.lib.core.encoder import Encoder
 
 
 class HatSploitEncoder(Encoder):
     def __init__(self):
-        super().__init__()
-
-        self.details.update({
-            'Name': "full name",
-            'Encoder': "name",
-            'Authors': [
-                'Your name (your nickname) - encoder developer',
-            ],
-            'Description': "description",
-            'Architecture': Arch,
+        super().__init__({
+            'Name': "",
+            'Encoder': "",
+            'Authors': (
+            ),
+            'Description': "",
+            'Arch': None,
         })
 
+        self.sample = Option('SAMPLE', None, "Sample option.",
+                             required=False, advanced=False)
+
+    def __call__(self):
+        """ Method that is called when encoder is used first time.
+
+        This method can be removed and often is useless, but it MUST
+        be used if:
+
+            1. You want to manipulate options pre-defined by Kits (e.g. hide them, set them, lock them)
+
+        Otherwise just delete this method from your encoder.
+        """
+
+        return
+
     def run(self):
+        """ Method that is called when this encoder is executed.
+
+        Payload that is passed to this encoder is available at self.payload
+        and this method should always return the value (processed payload).
+        """
+
         return self.payload
 ```
 
-**NOTE:** All encoders should inherit from `Encoder`, otherwise encoder won't be imported.
+**Note:** Every encoder should inherit from the `Encoder` class (`hatsploit.lib.encoder`). If this inheritance is missing, the encoder will not be loaded properly by HatSploit.
 
-Let's go through all the necessary methods:
+### Encoder architecture (`Arch`)
 
-* `self.details` - Is a dictionary containing all necessary information (`Full name`, `name`, `description`, `authors`, etc.)
-* `self.payload` - Payload which can be encoded.
-* `self.run()` - Method, which is called on `run`.
+Encoder architecture defined the payload architecture that is compatible with this encoder. For payload to work with your encoder, it should have the exact same architecture. For now, HatSploit encoders may accept these architectures:
 
-### Encoder arch (`Arch`)
-
-For now, HatSploit does accept these architectures:
-
-* Architectures: ARCH_X64, ARCH_X86, ARCH_AARCH64, ARCH_MIPSLE, ARCH_MIPSBE, ARCH_ARMLE, ARCH_ARMBE.
+* **ARCH_X64** - x86_64 CPU little-endian
+* **ARCH_X86** - x86 (i386, i486, i686) little-endian
+* **ARCH_AARCH64** - Aarch64 (arm64) little-endian
+* **ARCH_MIPSLE** - MIPS 32-bit little-endian
+* **ARCH_MIPSBE** - MIPS 32-bit 
+* **ARCH_ARMLE**
+* **ARCH_ARMBE**
 
 ### Encoder options
 
 You can add options to the encoder, read about them [here](/docs/development/options).
 
-## Examples
+## Examples and Best Practices
 
-You can always refer to the [main repository](https://github.com/EntySec/HatSploit/tree/main/hatsploit/encoders) which contains some encoders and rely on them.
-We will be glad if you first explore already existing encoders before writing new ones.
+If you are new to writing encoders for HatSploit, it is highly recommended that you review existing encoders in the [main repository](https://github.com/EntySec/HatSploit/tree/main/hatsploit/encoders). These existing encoders can serve as valuable references for understanding the structure and functionality of encoders within the framework.
+
+We encourage you to explore these resources and learn from them before developing new encoders. This practice will help you follow consistent patterns and ensure the best integration with HatSploit's functionality.

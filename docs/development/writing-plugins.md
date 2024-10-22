@@ -25,7 +25,7 @@ class HatSploitPlugin(Plugin):
             'Name': "",
             'Plugin': "",
             'Authors': [
-                'Your name (your nickname) - plugin developer',
+                'Your name (your username) - plugin developer',
             ],
             'Description': "",
         })
@@ -36,28 +36,34 @@ class HatSploitPlugin(Plugin):
                 'Description': "",
                 'MinArgs': 1, # Minimum number of arguments
                 'Options': [
-                    ( # command options (argparse)
+                    ( # command flags
                         ('-o', '--option'),
                         {
                             'help': "",
                             'type': int
                         }
                     ),
-                    # other command options
+                    # other command flags
                 ]
             })
         ]
 
-    # command body, name of method should be a name of command
     def command(self, args):
+        """ Command body, name of method should be a name of command.
+        """
+
         pass
 
-    # method executed during the loading process
     def load(self):
+        """ Method executed during the loading process.
+        """
+
         pass
 
-    # method executed during the unloading process
     def unload(self):
+        """ Method executed during the unloading process.
+        """
+
         pass
 ```
 
@@ -140,7 +146,35 @@ Command body or command executable code should be stored in the plugin method of
 **Shorts** attribute:
 
 {: .note }
-**Shorts** attribute should be added to a command if use of flags is relevant
+**Shorts** attribute should be added to a command if this command should have one or more shortcuts
+
+Shortcuts can be assigned to a command by configuring them using **Shorts** attribute:
+
+```
+Command({
+    'Name': 'sample',
+    'Description': 'Sample command.',
+    'Options': [
+        (
+            ('-o', '--option'),
+            {
+                'help': "Sample flag with long and short name.",
+            },
+            ('-O',),
+            {
+                'help': "Sample flag with only short name."
+            }
+        )
+    ],
+    'Shorts': {
+        'shortcut': ['command -o ?1 -O ?2', 'Shortcut description.']
+    }
+})
+```
+
+
+{: .note }
+Syntax like `?1` and `?2` are two first arguments that are passed to the shortcut. So, `shortcut foo bar` corresponds to `command -o foo -O bar`.
 
 ## Examples and Best Practices
 
