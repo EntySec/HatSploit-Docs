@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Writing payloads
+title: Writing Payloads
 parent: Development
 nav_order: 4
 ---
@@ -24,57 +24,94 @@ class HatSploitPayload(Payload):
         super().__init__()
 
         self.details.update({
-            'Name': "full name",
-            'Payload': "name",
+            'Name': "",
+            'Payload': "",
             'Authors': [
-                'Your name (your nickname) - payload developer',
+                'Your name (your username) - payload developer',
             ],
-            'Description': "description.",
+            'Description': """
+            """,
             'Arch': Arch,
             'Platform': Platform,
             'Session': None,
-            'Rank': "rank level",
-            'Type': "type",
+            'Type': None,
         })
 
+    def __call__(self):
+        """ Code in this function executed when payload is selected for first time.
+        """
+
+        pass
+
+    def implant(self):
+        """ This function should contain main part of payload.
+        """
+
+        return b''
+
     def run(self):
-        return ""
+        """ This function should contain whole payload.
+        """
+
+        return b''
 ```
 
-**NOTE:** All payloads should inherit from `Payload`, otherwise payload won't be imported.
+{: .note }
+All payloads should inherit from `Payload`, otherwise payload won't be imported.
 
-Let's go through all the necessary methods:
+### Payload name (`Name`)
 
-* `self.details` - Is a dictionary containing all necessary information (`Full name`, `name`, `description`, `authors`, etc.)
-* `self.run()` - Method, which is called on `run` and contains whole payload.
+Payload name is a full name of payload that is displayed in a console interface.
 
-Optional methods:
+### Payload slug (`Payload`)
 
-* `self.implant()` - Method which is called if final phase is required and contains the main part of payload.
-* `self.phase()` - Method which is called if whole payload is too big, it is an intermediate phase that is sent before the final implant.
+Payload slug is used as an argument to `set payload` command. It should look like this - `platform/architecture/name` (e.g. `linux/x64/shell_reverse_tcp`).
 
-### Payload phase
+### Payload stage
 
-If your final payload is too big (if there is a limit on the exploited system) then your payload should also include `self.phase()` method that is used as an intermediate phase. So, if payload is big, then instead of sending whole payload available in `self.run()`, handler will firstly send phase from `self.phase()` and then implant from `self.implant()`.
+If your final payload is too big (if there is a limit on the exploited system) then your payload should also include `self.stage()` method that is used as an intermediate stage. So, if payload is big, then instead of sending whole payload available in `self.run()`, handler will firstly send stage from `self.stage()` and then implant from `self.implant()`.
 
-**NOTE:** If you payload has more than one intermediate phase, methods can be called `self.phase()` for first phase, `self.phase1()` for second phase, `self.phase2()` for third and etc.
+{: .note }
+If you payload has more than one intermediate stage, methods can be called `self.stage()` for first stage, `self.stage1()` for second stage, `self.stage2()` for third and etc.
 
 ### Payload implant
 
-If payload's `self.run()` method should contain full payload, then `self.implant()` contains only the necessary part of it which is also called the final phase.
+If payload's `self.run()` method contains whole payload, then `self.implant()` contains only the necessary part of it which is also called the final stage.
 
-For example, if we have payload which connects back to HatSploit and the duplicates `/bin/sh` to the socket, then `self.implant()` of this payload should not contain the part which is related to connecting back.
+For example, if we have payload that connects back to HatSploit and then duplicates `/bin/sh` to the socket, then `self.implant()` of this payload should not contain the part 
+that is related to connecting back.
 
-With other words, `self.implant()` is a final phase that is being sent if payload is phased (staged). Each payload with `self.implant()` can be called phased (staged).
+With other words, `self.implant()` is a final stage that is being sent if payload is staged. Each payload with `self.implant()` can be called staged.
 
-This can be necessary if payload is bigger than the buffer size, then handler will need to send an intermediate phase from `self.phase()` and then the code from `self.implant()`.
+This can be necessary if payload is bigger than the buffer size, then handler will need to send an intermediate stage from `self.stage()` and then the code from `self.implant()`.
 
 ### Payload platform & arch (`Platform`, `Arch`)
 
 For now, HatSploit does accept these platforms and architectures:
 
-* Platforms: OS_LINUX, OS_MACOS, OS_ANDROID, OS_WINDOWS, OS_IPHONE, OS_UNIX.
-* Architectures: ARCH_X64, ARCH_X86, ARCH_AARCH64, ARCH_MIPSLE, ARCH_MIPSBE, ARCH_ARMLE, ARCH_ARMBE.
+#### Platforms
+
+* `OS_LINUX` - Linux OS
+* `OS_MACOS` - macOS (OSX)
+* `OS_ANDROID` - Android
+* `OS_IPHONE` - iOS (iPhoneOS)
+* `OS_UNIX` - Any POSIX-like system (macOS, Linux, iOS, etc.)
+* `OS_WINDOWS` - Windows OS
+
+#### Architectures
+
+* `ARCH_X64` - x86_64 CPU little-endian
+* `ARCH_X86` - x86 (i386, i486, i686) little-endian
+* `ARCH_AARCH64` - Aarch64 (arm64) little-endian
+* `ARCH_MIPSLE` - MIPS 32-bit little-endian
+* `ARCH_MIPSBE` - MIPS 32-bit big-endian
+* `ARCH_ARMLE` - ARM 32-bit little-endian
+* `ARCH_ARMBE` - ARM 32-bit big-endian
+* `ARCH_MIPS64LE` - MIPS 64-bit little-endian
+* `ARCH_MIPS64BE` - MIPS 64-bit big-endian
+* `ARCH_PPC` - PowerPC 32-bit big-endian
+* `ARCH_PPC64` - PowerPC 64-bit little-endian
+* `ARCH_S390X` - IBM Z-Arch big-endian
 
 ### Payload type (`Type`)
 
@@ -88,7 +125,8 @@ These types can be used for payloads:
 
 Payload session is a wrapper for a session. Should be set to `None` to use custom session wrapper. Acknowledge how to write a custom session wrapper [here](/docs/development/session-wrapper).
 
-**NOTE:** This field is optional, you can omit it instead of setting `Session` to `None`.
+{: .note }
+This field is optional, you can omit it instead of setting `Session` to `None`.
 
 ### Payload handler
 
@@ -103,13 +141,41 @@ class HatSploitPayload(Payload, Handler):
     ...
 ```
 
-With payload handler you won't need to declare `rhost` and `rport` options by yourself and can access their values as `self.rhost.value` and `self.rport.value`.
+With payload handler you won't need to declare `RHOST` and `RPORT` options by yourself and can access their values as `self.rhost.value` and `self.rport.value`.
 
 Read more about handler [here](/docs/kits/handler).
 
 ### Payload options
 
-You can add options to the payload, read about them [here](/docs/development/options).
+You can add options to the payload, read about them here - [Options](/docs/development/options).
+
+### Using assembler
+
+If you are writing payload that is a shellcode, you can store it in assembly and then let HatSploit assemble this code for you instead of storing machine code. This can be done 
+by invoking `self.__asm__` on specific assembly code. `self.__asm__` uses current payload architecture so it expects appropriate assembly.
+
+```python
+def run(self):
+    """ This function should contain whole payload.
+
+    This particular example generates shellcode that reboots the system
+    if executed.
+    """
+
+    return self.__asm__(
+        """
+        start:
+            mov al, 0xa2
+            syscall
+
+            mov al, 0xa9
+            mov edx, 0x1234567
+            mov esi, 0x28121969
+            mov edi, 0xfee1dead
+            syscall
+        """
+    )
+```
 
 ## Examples
 

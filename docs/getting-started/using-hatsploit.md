@@ -51,7 +51,9 @@ HatSploit Tip: You can run a module in the background by using `run -j`.
 
 HatSploit offers a variety of commands that allow you to interact with its functionality. To see a list of all available commands, you can simply type `help` or `?`. This will provide you with a list of commands alongside a description of their purpose.
 
-```
+```entysec
+[hsf3]> help
+
 Core Commands:
 
     Command    Description
@@ -59,10 +61,125 @@ Core Commands:
     exit       Exit console.
     help       Show all available commands.
     quit       Exit console.
+    source     Execute specific file as source.
     exit       Exit HatSploit Framework.
+    search     Search payloads, modules and plugins.
+
+
+Developer Commands:
+
+    Command    Description
+    pyshell    Open Python shell.
+    repeat     Repeat specified command.
+    sleep      Sleep for specified seconds.
+
+
+Encoder Commands:
+
+    Command     Description
+    encoders    Show available encoders.
+Press Enter for more, 'a' for all, 'q' to quit:
 ```
 
 Each command is designed to assist you in navigating through the framework's features with ease. Familiarizing yourself with these commands will significantly enhance your user experience.
+
+## Interface built-ins
+
+Built-ins are created to enchance interface and provide shorter and simplier ways to perform frequent tasks (e.g. clear terminal window, display available commands, execute 
+source file, etc.)
+
+* `#` - NOP (no operation), do nothing, can be used for comments in scripts.
+
+```entysec
+[hsf3]> # nothing has happened
+```
+
+* `?` - Shortcut for `help` command, displays all available interface commands.
+
+```entysec
+[hsf3]> ?
+
+Core Commands:
+
+    Command    Description
+    clear      Clear terminal window.
+    exit       Exit console.
+    help       Show all available commands.
+    quit       Exit console.
+    source     Execute specific file as source.
+    exit       Exit HatSploit Framework.
+    search     Search payloads, modules and plugins.
+
+
+Developer Commands:
+
+    Command    Description
+    pyshell    Open Python shell.
+    repeat     Repeat specified command.
+    sleep      Sleep for specified seconds.
+
+
+Encoder Commands:
+
+    Command     Description
+    encoders    Show available encoders.
+Press Enter for more, 'a' for all, 'q' to quit:
+```
+
+* `@` - Clears terminal window.
+
+* `!` - Executes system command or sequence of commands.
+
+```entysec
+[hsf3]> !pwd
+[*] Executing system command: pwd
+
+/Users/felix
+```
+
+* `:` - Execute file as source file or sequence of interface commands.
+
+```entysec
+[hsf3]> :source.cmd
+[hsf3]> :
+: help
+: modules
+: encoders
+```
+
+* `.` - Exits command-line interface.
+
+* `*` - If used inside module, displays module information, targets, options and advanced options.
+
+```entysec
+[hsf3: D-Link hedwig Remote Code Execution]> *
+
+    Name: D-Link hedwig Remote Code Execution
+  Module: exploit/linux/dlink/hedwig_code_execution
+Platform: linux
+    Rank: high
+
+Authors:
+  Ivan Nikolskiy (enty8080) - module developer
+  Roberto Paleari - vulnerability researcher
+
+Description:
+  Remote Code Execution in D-Link DIR-645 <= 1.03, DIR-300 <= 2.14,
+  DIR-600.
+
+References:
+  URL: https://www.exploit-db.com/exploits/27283
+  URL: https://nvd.nist.gov/vuln/detail/CVE-2013-7389
+  CVE: 2013-7389
+  EDB: 27283
+
+Devices:
+  D-Link DIR-645 v1.03
+  D-Link DIR-300 v2.14
+  D-Link DIR-600
+
+Press Enter for more, 'a' for all, 'q' to quit:
+```
 
 ## Startup options
 

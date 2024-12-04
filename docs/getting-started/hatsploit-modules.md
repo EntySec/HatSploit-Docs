@@ -5,11 +5,6 @@ parent: Getting started
 nav_order: 5
 ---
 
-{: .note-title }
-> My note title
->
-> A paragraph with a custom title callout
-
 Since HatSploit Framework is built aroung a modular system, all the additional functional including exploits, tools or post-exploitation capabilities are implemented within modules.
 
 There are the categories that are commonly used:
@@ -75,7 +70,6 @@ Any module can be configured by a set of options that are predefined by a module
 Module Options (exploit/linux/rompager/multi_password_disclosure):
  
     Option      Value    Required    Description
-    ------      -----    --------    -----------
     host                 yes         HTTP host.
     port        80       yes         HTTP port.
     ssl         no       no          Use SSL.
@@ -86,6 +80,42 @@ Module Options (exploit/linux/rompager/multi_password_disclosure):
 [i] host => 192.168.1.56
 ```
 
+In order to display module devices (systems/devices that are affected by this particular module) use `show devices` or `devices`.
+
+```entysec
+[hsf3: RomPager Multi Password Disclosure]> devices
+
+Devices (exploit/linux/rompager/multi_password_disclosure):
+
+    ID    Name
+    0     AirLive WT-2000ARM (2.11.6.0(RE0.C29)3.7.6.1)
+    1     D-Link DSL-2520U (1.08 Hardware Version: B1)
+    2     D-Link DSL-2640R
+    3     D-Link DSL-2740R (EU_1.13 Hardware Version: A1)
+    4     Huawei 520 HG
+    5     Huawei 530 TRA
+    6     Pentagram Cerberus P 6331-42
+    7     TP-Link TD-8816
+    8     TP-Link TD-8817 (3.0.1 Build 110402 Rel.02846)
+    9     TP-LINK TD-8840T (3.0.0 Build 101208 Rel.36427)
+    10    TP-Link TD-W8901G
+    11    TP-Link TD-W8951ND
+    12    TP-Link TD-W8961ND
+    13    ZTE ZXV10 W300 (W300V1.0.0a_ZRD_CO3)
+    14    ZTE ZXDSL 831CII (ZXDSL 831CIIV2.2.1a_Z43_MD)
+    15    ZynOS
+    16    ZyXEL ES-2024
+    17    ZyXEL Prestige P-2602HW
+    18    ZyXEL Prestige 782R
+```
+
+{: .note }
+`show targets` or `targets` command can be invoked to display different module configurations for each target. In case of this example, there is no custom configurations, 
+however some modules might have them. To select specific configuration use `target <id>` where `id` is the ID of configuration.
+
+{: .note }
+You may use `*` that displays information, options and advanced options, devices and targets all at once.
+
 After all the configuration steps are completed, module can be executed by `run` command.
 
 ```entysec
@@ -95,7 +125,6 @@ After all the configuration steps are completed, module can be executed by `run`
 Credentials:
  
     Username    Password
-    --------    --------
     admin       admin
  
 [+] Exploit module completed!

@@ -5,15 +5,15 @@ parent: Development
 nav_order: 2
 ---
 
-# Writing Plugins for HatSploit
-
 Plugins in HatSploit are designed to extend the basic command list, providing custom functionality that integrates seamlessly with the framework. Once you have determined the purpose of your plugin, you can use the following template as a starting point and modify it according to your needs.
 
+## Template
+
 ```python
-""" 
+"""
 This plugin requires HatSploit: https://hatsploit.com
 Current source: https://github.com/EntySec/HatSploit
-""" 
+"""
 
 from badges.cmd import Command
 from hatsploit.lib.core.plugin import Plugin
@@ -67,7 +67,8 @@ class HatSploitPlugin(Plugin):
         pass
 ```
 
-**Note:** Every plugin should inherit from the `Plugin` class (`hatsploit.lib.plugin`). If this inheritance is missing, the plugin will not be loaded properly by HatSploit.
+{: .note }
+Every plugin should inherit from the `Plugin` class (`hatsploit.lib.plugin`). If this inheritance is missing, the plugin will not be loaded properly by HatSploit.
 
 ## Adding commands
 
@@ -150,7 +151,7 @@ Command body or command executable code should be stored in the plugin method of
 
 Shortcuts can be assigned to a command by configuring them using **Shorts** attribute:
 
-```
+```python
 Command({
     'Name': 'sample',
     'Description': 'Sample command.',

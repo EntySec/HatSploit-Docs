@@ -12,8 +12,6 @@ There are four types of databases in the HatSploit Framework.
 * **3.** Plugin database - database containing information about plugins.
 * **4.** Encoder database - database containing information about encoders.
 
-**NOTE:** HatSploit uses **NoSQL** json databases.
-
 ## Base Databases
 
 HatSploit base databases are databases that contains HatSploit modules, payloads, plugins and encoders from this repository (modules - `hatsploit/modules`, payloads - `hatsploit/payloads`, plugins - `hatsploit/plugins`, encoders - `hatsploit/encoders`).

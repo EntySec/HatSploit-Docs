@@ -14,23 +14,23 @@ You don't need to import any additional libraries to use this API. However, this
 ### Printing messages
 
 ```python
-self.print_empty("Test.")
-self.print_process("Test...")
-self.print_error("Test!")
-self.print_warning("Test.")
-self.print_success("Test!")
-self.print_information("Test.")
+self.print_empty("Sample empty information.")
+self.print_process("Sample process happening...")
+self.print_error("Sample error occurred!")
+self.print_warning("Sample warning message.")
+self.print_success("Sample successful message!")
+self.print_information("Sample information message.")
 ```
 
 **output:**
 
-```hsf
-Test.
-[*] Test...
-[-] Test!
-[!] Test.
-[+] Test!
-[i] Test.
+```entysec
+Sample empty information.
+[*] Sample process happening...
+[-] Sample error occurred!
+[!] Sample warning message.
+[+] Sample successful message!
+[i] Sample information message.
 ```
 
 ### Printing tables

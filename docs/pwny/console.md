@@ -5,18 +5,18 @@ parent: Pwny
 nav_order: 2
 ---
 
-Pwny is equipped with powerful console that provides an extensive interface for interacting with payload. Console is different for each system due to that different systems support different commands and plugins. To inspect the list of available commands simply type `help`.
+Pwny is equipped with powerful console that provides an extensive interface for interacting with payload. Console is different for each system due to that different systems 
+support different commands and plugins. To inspect the list of available commands simply type `help` or `?`.
 
-```hsf
+```entysec
 Pwny interactive shell v1.0.0
 Running as felix on /Users/felix
 
-pwny:/Users/felix felix$ help
+pwny:/Users/felix felix$ ?
 
 Core Commands:
 
     Command    Description
-    -------    -----------
     clear      Clear terminal window.
     env        List environment variables.
     exec       Execute path.
@@ -30,14 +30,14 @@ Core Commands:
     unload     Unload plugin by name.
     unset      Delete environment variable.
 
-... snip ...
+Press Enter for more, or 'q' to quit:
 ```
 
 ## Information gathering
 
 The most basic thing that you can do with Pwny is collect information about system and hardware this system is running on. Console displays it in pretty format (neofetch-like style) if used with `sysinfo` command.
 
-```hsf
+```entysec
 pwny:/Users/felix felix$ sysinfo
 
          .:'          Name: macOS
@@ -47,8 +47,6 @@ pwny:/Users/felix felix$ sysinfo
  :         :          Arch: arm64
   :         `-;     Memory: 14.23 GB/16.0 GB
    `.__.-.__.'        UUID: 7b22d2ad-8b8d-496c-b163-f265f35253e1
-
-pwny:/Users/felix felix$ 
 ```
 
 ## Encrypted negotiation
@@ -57,25 +55,24 @@ It's up to you to decide if you want to communicate with target device without e
 
 You can establish or re-establish secure communication manually using `secure` command or disable it at any time by typing `unsecure`.
 
-```hsf
+```entysec
 pwny:/Users/felix felix$ secure
-[*] Generating RSA keys...
-[*] Exchanging RSA keys for TLS...
+[*] Generating RSA keys (1/2)
+[*] Exchanging RSA keys (2/2)
 [+] RSA keys exchange success!
-[+] Communication secured with TLS! 
+[+] Session secured with AES256-CBC!
 ```
 
 ## Pretty output
 
 If there is a huge amount of data to be printed to the screen, Pwny console displays it in less-like format to fit all the data:
 
-```hsf
+```entysec
 pwny:/Users/felix felix$ ps
 
 Process List:
 
     PID      CPU      Name                Path
-    ---      ---      ----                ----
     1        arm64    launchd
     73       arm64    syslogd
     74       arm64    UserEventAgent
@@ -92,13 +89,12 @@ Press Enter for more, or 'q' to quit:
 
 Pwny console supports auto-completion. If you type `li` instead of `list` it will complete it for you.
 
-```hsf
+```entysec
 pwny:/Users/felix felix$ li
 
 Listing: .:
 
     Mode         Size         Type         Modified               Name
-    ----         ----         ----         --------               ----
     r--------    7.00 B       file         2023-01-28 15:19:51    .CFUserTextEncoding
     rw-------    1.16 KB      file         2024-02-06 01:18:13    .sqlite_history
     rw-------    12.00 B      file         2024-02-24 15:04:39    important.txt
@@ -106,18 +102,81 @@ Listing: .:
 
 However, if you spell some command wrongly and auto-completion won't be able to select the appropriate command, it would suggest you the command.
 
-```hsf
+```entysec
 pwny:/Users/felix felix$ ca
 [!] Did you mean? cam, cat
 [-] Failed to spawn process for ca!
 [-] Unrecognized command: ca!
 ```
 
-## Binaries
+## Shell fallback
+
+Want to go back to basic reverse shell? Not a problem, Pwny allows you to drop into basic shell.
+
+```entysec
+pwny:/Users/felix felix$ sh
+pwd
+/Users/felix
+whoami
+felix
+exit
+```
+
+## Shortcuts
+
+Type path straight into Pwny console and it will decide: change to the path if it's a directory or execute path if it's an executable.
+
+```entysec
+pwny:/Users/felix felix$ /bin/df
+Filesystem     512-blocks      Used Available Capacity iused      ifree %iused  Mounted on
+/dev/disk3s3s1  965595304  40074232 168331776    20%  553779 4827422741    0%   /
+pwny:/Users/felix felix$ /
+pwny:/ felix$ pwd
+/
+```
+
+Prepending `!` to command executes shell command locally.
+
+## Multiple tunnels
+
+Pwny may negotiate with multiple servers at once by creating a separate tunnel for each address.
+
+```entysec
+pwny:/Users/felix felix$ tunnels -l
+
+Tunnels:
+
+    Self    ID    URI                     Encryption    Status    Delay    Keep-Alive
+    *       0     tcp://127.0.0.1:8888    AES256-CBC    active    1s       off
+
+pwny:/Users/felix felix$ tunnels -c tcp://127.0.0.1:8881
+pwny:/Users/felix felix$ tunnels -l
+
+Tunnels:
+
+    Self    ID    URI                     Encryption                   Status    Delay    Keep-Alive
+    *       0     tcp://127.0.0.1:8888    AES256-CBC                   active    1s       off
+            1     tcp://127.0.0.1:8881    No encryption enabled (!)    active    1s       off
+```
+
+## Environment
+
+Pwny console has its own environment, meaning that setting specific environment variables might affect some features. You can list all environment variables with `env` command.
+
+```entysec
+pwny:/Users/felix felix$ env
+
+Environment Variables:
+
+    Name    Value
+    PATH    /opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+```
+
+### Binaries
 
 Pwny console supports execution of system-wide binaries (i.e. binaries in `PATH`) as shown below.
 
-```hsf
+```entysec
 pwny:/Users/felix felix$ ls /
 Applications
 Library
@@ -137,67 +196,26 @@ usr
 var
 ```
 
-## Shell fallback
-
-Want to go back to basic reverse shell? No a problem, Pwny allows you to drop into basic shell.
-
-```hsf
-pwny:/Users/felix felix$ bash
-pwd
-/Users/felix
-whoami
-felix
-exit
-```
-
-## Shortcuts
-
-Type path straight into Pwny console and it will decide: change to the path if it's a directory or execute path if it's an executable.
-
-```hsf
-pwny:/Users/felix felix$ /bin/df
-Filesystem     512-blocks      Used Available Capacity iused      ifree %iused  Mounted on
-/dev/disk3s3s1  965595304  40074232 168331776    20%  553779 4827422741    0%   /
-pwny:/Users/felix felix$ /
-pwny:/ felix$ pwd
-/
-```
-
-Prepending `!` to command executes shell command locally.
-
-## Environment
-
-Pwny console has its own environment, meaning that setting specific environment variables might affect some features. You can list all environment variables with `env` command.
-
-```hsf
-pwny:/ felix$ env
-
-Environment Variables:
-
-    Name    Value
-    ----    -----
-    PATH    /opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-```
-
 ### Verbose mode
 
-If you want to see all the packets that were sent and received, you can enable `VERBOSE` variable.
+If you want to see all the packets that were sent and received, you can enable `verbose` variable.
 
-```hsf
-pwny:/ felix$ set verbose on
+```entysec
+pwny:/Users/felix felix$ set verbose on
 [i] Sent TLV packet (12 bytes, 1 objects)
-[i] 00000000  b9 0b 00 00 04 00 00 00  db 59 00 00             |.........Y..    |
-[i] Read TLV packet (21 bytes, 2 objects)
-[i] 00000000  e3 2e 00 00 01 00 00 00  2f ba 0b 00 00 04 00 00 |......../.......|
-[i] 00000010  00 01 00 00 00                                   |.....           |
+[i] 00000000  00 00 0b b9 00 00 00 04  00 00 59 db             |..........Y.    |
 [i] Sent TLV packet (12 bytes, 1 objects)
-[i] 00000000  b9 0b 00 00 04 00 00 00  0f 52 00 00             |.........R..    |
-[i] Read TLV packet (25 bytes, 2 objects)
-[i] 00000000  0c 00 00 00 05 00 00 00  66 65 6c 69 78 ba 0b 00 |........felix...|
-[i] 00000010  00 04 00 00 00 01 00 00  00                      |.........       |
+[i] 00000000  00 00 0b b9 00 00 00 04  00 00 52 0f             |..........R.    |
 [i] Sent TLV packet (12 bytes, 1 objects)
-[i] 00000000  b9 0b 00 00 04 00 00 00  0f 52 00 00             |.........R..    |
-[i] Read TLV packet (25 bytes, 2 objects)
-[i] 00000000  0c 00 00 00 05 00 00 00  66 65 6c 69 78 ba 0b 00 |........felix...|
-[i] 00000010  00 04 00 00 00 01 00 00  00                      |.........       |
+[i] 00000000  00 00 0b b9 00 00 00 04  00 00 52 0f             |..........R.    |
+pwny:/Users/felix felix$ whoami
+[i] Sent TLV packet (12 bytes, 1 objects)
+[i] 00000000  00 00 0b b9 00 00 00 04  00 00 52 0f             |..........R.    |
+felix
+[i] Sent TLV packet (12 bytes, 1 objects)
+[i] 00000000  00 00 0b b9 00 00 00 04  00 00 59 db             |..........Y.    |
+[i] Sent TLV packet (12 bytes, 1 objects)
+[i] 00000000  00 00 0b b9 00 00 00 04  00 00 52 0f             |..........R.    |
+[i] Sent TLV packet (12 bytes, 1 objects)
+[i] 00000000  00 00 0b b9 00 00 00 04  00 00 52 0f             |..........R.    |
 ```

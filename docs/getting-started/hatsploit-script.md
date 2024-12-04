@@ -11,7 +11,14 @@ HatSploit has the ability to execute interface commands from the given file.
 
 The HatSploit script provided below scans all directories at `http://127.0.0.1:8080/`.
 
-```entysec
+```hsf
+##
+# Created by Ivan Nikolskiy at 08/08/2022
+# (c) EntySec 2022
+#
+# @Brief: Scan HTTP server hosted on localhost:8080
+##
+
 use auxiliary/generic/scanner/directory_scanner
     set host 127.0.0.1
     set port 8080

@@ -60,7 +60,8 @@ Acknowledge that you can hide an option by setting `visible` to `False`.
 self.myvar.visible = False
 ```
 
-**NOTE:** Options which are not visible can be set from module (in code), but can't be set using `set` command.
+{: .note }
+Options which are not visible can be set from module (in code), but can't be set using `set` command.
 
 You may also lock variable, so it will be impossible to set it. Locked options can't be set using `set` command and also from the module.
 

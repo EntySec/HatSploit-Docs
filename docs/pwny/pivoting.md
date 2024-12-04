@@ -2,7 +2,7 @@
 layout: default
 title: Pivoting in Pwny
 parent: Pwny
-nav_order: 4
+nav_order: 3
 ---
 
 Pivoting is an essential part of any cyber attack. This is the way how attackers can access other resources inside the internal network.
@@ -11,7 +11,7 @@ Pivoting is an essential part of any cyber attack. This is the way how attackers
 
 Pwny provides a simply utilizable command `portfwd` that allows you to manage port forwarding rules. It works by forwarding traffic from internal network to your network.
 
-```hsf
+```entysec
 pwny:/Users/felix felix$ portfwd
 usage: portfwd [-h] [-l] [-d ID] [-L HOST] [-P PORT] [-p PORT] [-r HOST]
 
@@ -29,17 +29,16 @@ options:
 
 In the below scenario we are prompted to forwarding traffic from SSH server located in the internal network and access it from the outside.
 
-```hsf
-pwny:/Users/felix felix$ portfwd -L 127.0.0.1 -P 5555 -r 10.0.0.2 -p 22
-[*] Adding rule tcp://10.0.0.2:22...
+```entysec
+pwny:/Users/felix felix$ portfwd -L 127.0.0.1 -P 5555 -r 10.10.10.2 -p 22
+[*] Adding rule tcp://10.10.10.2:22...
 [+] Rule activated as 0!
 pwny:/Users/felix felix$ portfwd -l
 
 Forwarding rules:
 
     ID    Rule
-    --    ----
-    0     127.0.0.1:5555 -> 10.0.0.2:22
+    0     127.0.0.1:5555 -> 10.10.10.2:22
 ```
 
 Now, lets try and connect to the forwarded server:
@@ -56,7 +55,7 @@ pi@raspberry:~$
 
 Next, as we don't need this forwarding rule anymore, we can just flush it.
 
-```hsf
+```entysec
 pwny:/Users/felix felix$ portfwd -d 0
 [*] Flushing rule 0...
 [-] TCP listener is not started!

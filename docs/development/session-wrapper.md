@@ -7,7 +7,8 @@ nav_order: 8
 
 Session wrapper is a class that is being called when new session opens. This class contains all the necessary methods for working with the session. Session wrapper should be defined in the payload, but if not, the default one is used.
 
-**NOTE:** We still highly advise you to use the default session wrapper that is provided by the HatSploit Framework.
+{: .note }
+We still highly advise you to use the default session wrapper that is provided by the HatSploit Framework.
 
 ## Template
 
@@ -48,7 +49,8 @@ class HatSploitSession(Session):
         pass
 ```
 
-**NOTE:** All session wrappers should inherit from `Session`, otherwise session wrapper won't be imported.
+{: .note }
+All session wrappers should inherit from `Session`, otherwise session wrapper won't be imported.
 
 Let's go through all the necessary methods:
 

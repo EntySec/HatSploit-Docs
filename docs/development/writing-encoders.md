@@ -66,9 +66,14 @@ Encoder architecture defined the payload architecture that is compatible with th
 * **ARCH_X86** - x86 (i386, i486, i686) little-endian
 * **ARCH_AARCH64** - Aarch64 (arm64) little-endian
 * **ARCH_MIPSLE** - MIPS 32-bit little-endian
-* **ARCH_MIPSBE** - MIPS 32-bit 
-* **ARCH_ARMLE**
-* **ARCH_ARMBE**
+* **ARCH_MIPSBE** - MIPS 32-bit big-endian
+* **ARCH_ARMLE** - ARM 32-bit little-endian
+* **ARCH_ARMBE** - ARM 32-bit big-endian
+* **ARCH_MIPS64LE** - MIPS 64-bit little-endian
+* **ARCH_MIPS64BE** - MIPS 64-bit big-endian
+* **ARCH_PPC** - PowerPC 32-bit big-endian
+* **ARCH_PPC64** - PowerPC 64-bit little-endian
+* **ARCH_S390X** - IBM Z-Arch big-endian
 
 ### Encoder options
 
